@@ -16,7 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootConfiguration
 @EnableAutoConfiguration
-@ComponentScan("io.github.rmuhamedgaliev")
+@ComponentScan("io.github.ilia_kulakov")
 public class App {
 
 

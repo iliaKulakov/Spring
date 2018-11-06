@@ -1,5 +1,6 @@
 package io.github.ilia_kulakov.controller;
 
+import io.github.ilia_kulakov.model.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
