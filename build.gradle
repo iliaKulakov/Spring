@@ -14,7 +14,7 @@ plugins {
 
 
 // Define the main class for the application
-mainClassName = 'io.github.rmuhamedgaliev.App'
+mainClassName = 'io.github.ilia_kulakov.App'
 
 
 bootJar {
@@ -23,8 +23,8 @@ bootJar {
 }
 
 
-sourceCompatibility = 9
-targetCompatibility = 9
+sourceCompatibility = 11
+targetCompatibility = 11
 
 
 dependencies {
