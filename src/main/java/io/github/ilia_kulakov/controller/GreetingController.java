@@ -22,4 +22,11 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, name));
     }
+
+    @RequestMapping("/user")
+    public Greeting user(@RequestParam(value="name User", defaultValue="World User") String name) {
+        return new Greeting(counter.incrementAndGet(),
+                String.format(template, name));
+    }
+
 }
