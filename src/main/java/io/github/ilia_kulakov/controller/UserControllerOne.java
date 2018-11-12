@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserControllerOne {
-    private List users = new ArrayList<>();
+    private List<UserOne> users = new ArrayList<>();
 
 
     @ResponseBody
