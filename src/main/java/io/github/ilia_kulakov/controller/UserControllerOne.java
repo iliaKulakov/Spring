@@ -1,6 +1,6 @@
 package io.github.ilia_kulakov.controller;
 
-import io.github.ilia_kulakov.model.User;
+
 import io.github.ilia_kulakov.model.UserOne;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class UserControllerOne {
     @RequestMapping(value = "{userId}",method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public UserOne updateUser(@PathVariable("userId") Integer userId) {
         UserOne user = this.users.get(userId);
-        user.setContent("ranom-content");
+        user.setContent("random-content");
         this.users.set(userId, user);
         return user;
     }
