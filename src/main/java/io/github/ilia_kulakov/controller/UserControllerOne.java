@@ -1,9 +1,9 @@
 package io.github.ilia_kulakov.controller;
 
-
 import io.github.ilia_kulakov.model.UserOne;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,17 +22,17 @@ public class UserControllerOne {
 
 
     @ResponseBody
-    @RequestMapping(value = "{userId}",method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "{userId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public UserOne updateUser(@PathVariable("userId") Integer userId) {
         UserOne user = this.users.get(userId);
-        user.setContent("random-content");
+        user.setContent("ranom-content");
         this.users.set(userId, user);
         return user;
     }
 
 
     @ResponseBody
-    @RequestMapping(value = "{userId}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "{userId}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable("userId") Integer userId) {
         this.users.remove(userId);
     }

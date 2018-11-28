@@ -15,8 +15,6 @@ public class UserOne {
     }
 
 
-
-
     public String getContent() {
         return content;
     }
