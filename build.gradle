@@ -48,7 +48,6 @@ repositories {
     jcenter()
 }
 
-
 wrapper {
     gradleVersion = '4.10.2' // Желаемая версия
 }
