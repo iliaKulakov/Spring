@@ -5,7 +5,6 @@ public class UserOne {
     private long id;
     private String content;
 
-
     public UserOne(String content) {
         this.content = content;
     }
@@ -18,7 +17,6 @@ public class UserOne {
     public String getContent() {
         return content;
     }
-
 
     public void setContent(String content) {
         this.content = content;

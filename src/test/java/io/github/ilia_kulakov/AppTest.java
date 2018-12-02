@@ -4,6 +4,7 @@ import io.github.ilia_kulakov.controller.GreetingController;
 import io.github.ilia_kulakov.model.Greeting;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.internal.matchers.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -60,7 +61,7 @@ public class AppTest {
                     .andExpect(status().isOk())
                     .andDo(print())
                     .andExpect(jsonPath("content", notNullValue()))
-                    .andExpect(jsonPath("content", is("Hello, name1!")));
+                    .andExpect(jsonPath("content", is("Hello, name!")));
         }
         catch (Exception e)
         {
