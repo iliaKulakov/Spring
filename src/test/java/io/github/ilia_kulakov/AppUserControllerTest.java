@@ -33,18 +33,17 @@ public class AppUserControllerTest {
 
     @Test
     public void testAppUserOne() throws Exception {
-       // given(userControllerOne.greeting("name")).willReturn(new Greeting(0, "Hello, name!"));
         given(userControllerOne.createUser("test_user_1"))
-                .willReturn(new UserOne("test_user_1") );
+                .willReturn(new UserOne("test_user_1"));
 
-       // mvc.perform(get("/users").param
-        mvc.perform(get("/users")
+
+
+      /*  mvc.perform(get("name")
                 .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON));
-                //.andExpect(status().isOk())
-               // .andDo(print())
-              //  .andExpect(jsonPath("content", notNullValue()));
-                //.andExpect(jsonPath("content", is("Hello, name!")));
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("name", notNullValue()));*/
+
+
 
     }
 
