@@ -1,9 +1,9 @@
 package io.github.ilia_kulakov.controller;
 
 import io.github.ilia_kulakov.model.UserOne;
-import org.apache.naming.factory.BeanFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,8 +1,6 @@
 package io.github.ilia_kulakov;
 
-import io.github.ilia_kulakov.controller.GreetingController;
 import io.github.ilia_kulakov.controller.UserControllerOne;
-import io.github.ilia_kulakov.model.Greeting;
 import io.github.ilia_kulakov.model.UserOne;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -36,17 +34,16 @@ public class AppUserControllerTest {
         given(userControllerOne.createUser("test_user_1"))
                 .willReturn(new UserOne("test_user_1"));
 
-
-
-      /*  mvc.perform(get("name")
+        mvc.perform(post("/users").content("test_user_1")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("name", notNullValue()));*/
-
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("content", notNullValue()))
+                .andExpect(jsonPath("content", is("test_user_1")));
 
 
     }
-
 
 
 }

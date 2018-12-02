@@ -4,7 +4,6 @@ import io.github.ilia_kulakov.controller.GreetingController;
 import io.github.ilia_kulakov.model.Greeting;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.internal.matchers.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -49,25 +48,16 @@ public class AppTest {
     }
 
 
-
     @Test
     public void testAppHasAGreetingNegariveScenario() throws Exception {
-
-        try {
-            given(greetingController.greeting("name")).willReturn(new Greeting(0, "Hello, name!"));
-            mvc.perform(get("/greeting").param("name", "name")
-                    .accept(MediaType.APPLICATION_JSON)
-                    .contentType(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk())
-                    .andDo(print())
-                    .andExpect(jsonPath("content", notNullValue()))
-                    .andExpect(jsonPath("content", is("Hello, name!")));
-        }
-        catch (Exception e)
-        {
-            System.out.println("Exception occurred in result");
-        }
-
+        given(greetingController.greeting("name")).willReturn(new Greeting(0, "Hello, name!"));
+        mvc.perform(get("/greeting").param("name", "name")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("content", notNullValue()))
+                .andExpect(jsonPath("content", is("Hello, name!")));
     }
 
 
