@@ -49,5 +49,5 @@ repositories {
 }
 
 wrapper {
-    gradleVersion = '5.0' // Желаемая версия
+    gradleVersion = '5.1.1' // Желаемая версия
 }
