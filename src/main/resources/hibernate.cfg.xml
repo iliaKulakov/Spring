@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connetcion.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgres://localhost:5432/DB</property> // имя базы данных
+        <property name="connection.username">postgre</property> // имя пользователя
+        <property name="connection.password">P@r0v0z</property> // пароль
+        <property name="dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
+        <property name="default_schema">public</property> // схема БД
+        <property name="swow_sql">true</property> // отображенеи SQL запросов
+        <property name="hbm2ddl.auto">create-drop</property> // тип генерации
+
+        <mapping class="autobase.models.Models"/> // путь до медли БД. Можн дописать потом
+
+    </session-factory>
+</hibernate-configuration>
