@@ -5,6 +5,9 @@ package io.github.ilia_kulakov;
  */
 
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -22,10 +25,13 @@ public class App {
 
 
     public static void main(String[] args) {
+
+
+
+      //  Session session = sessionFactory.openSession();
+      //  Transaction tx = session.beginTransaction();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         SpringApplication.run(App.class, args);
-
-
-
 
 
     }
