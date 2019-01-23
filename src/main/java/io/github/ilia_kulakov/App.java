@@ -31,7 +31,7 @@ public class App {
        // Transaction tx = session.beginTransaction();
       //  session.close();
 
-       // SpringApplication.run(App.class, args);
+        SpringApplication.run(App.class, args);
 
        /* SessionFactory sessionFactory =
                 new Configuration()

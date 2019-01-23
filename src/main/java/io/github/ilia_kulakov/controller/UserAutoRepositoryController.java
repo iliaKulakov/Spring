@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/users_in_database")
 public class UserAutoRepositoryController {
 
     private UserAutoRepository userAutoRepository;
@@ -21,7 +21,8 @@ public class UserAutoRepositoryController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UserOne createUser(@RequestBody String content){
-        UserOne userOne =new UserOne(userOne.getContent());
+        //UserOne userOne =new UserOne(userOne.getContent());
+        UserOne userOne = new UserOne(content);
         userOne = this.userAutoRepository.save(userOne);
         return userOne;
     }
