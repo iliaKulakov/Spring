@@ -14,7 +14,7 @@
         <!--<property name="hbm2ddl.auto">validate</property>-->
         <!--<property name="hbm2ddl.auto">update</property>-->
 
-        <mapping class="io.github.ilia_kulakov.domain.Message"/>
+        <mapping class="io.github.personal_finance.domain.Message"/>
 
     </session-factory>
 </hibernate-configuration>
