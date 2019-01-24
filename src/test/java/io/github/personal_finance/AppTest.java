@@ -1,7 +1,5 @@
-package io.github.ilia_kulakov;
+package io.github.personal_finance;
 
-import io.github.ilia_kulakov.controller.GreetingController;
-import io.github.ilia_kulakov.model.Greeting;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

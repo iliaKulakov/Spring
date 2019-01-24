@@ -2,19 +2,16 @@
 plugins {
     // Apply the java plugin to add support for Java
     id 'java'
-
-
     // Apply the application plugin to add support for building an application
     id 'application'
-
-
     id 'org.springframework.boot' version '2.1.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id "org.hibernate.gradle.tools" version "1.2.5"
+
 }
 
-
 // Define the main class for the application
-mainClassName = 'io.github.ilia_kulakov'
+mainClassName = 'io.github.ilia_kulakov.App'
 
 
 bootJar {
@@ -30,17 +27,13 @@ targetCompatibility = 11
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     implementation 'com.google.guava:guava:23.0'
-
-
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.0.Final'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
-
-
-    
+    runtime('org.postgresql:postgresql')
 }
 
 
