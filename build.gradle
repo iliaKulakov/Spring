@@ -1,17 +1,12 @@
 
 plugins {
-    // Apply the java plugin to add support for Java
     id 'java'
-    // Apply the application plugin to add support for building an application
     id 'application'
     id 'org.springframework.boot' version '2.1.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.6.RELEASE'
-    id "org.hibernate.gradle.tools" version "1.2.5"
-
 }
 
-// Define the main class for the application
-mainClassName = 'io.github.ilia_kulakov.App'
+mainClassName = 'io.github.io.github.personal_finance.App'
 
 
 bootJar {
@@ -19,30 +14,32 @@ bootJar {
     version = '0.0.1'
 }
 
-
 sourceCompatibility = 11
 targetCompatibility = 11
 
+repositories {
+    jcenter()
+}
+
+ext {
+    hibernateV = '5.4.0.Final'
+}
 
 dependencies {
-    // This dependency is found on compile classpath of this component and consumers.
     implementation 'com.google.guava:guava:23.0'
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.0.Final'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+
+    implementation 'org.hibernate:hibernate-core:${hibernateV}'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
     // Use JUnit test framework
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'junit:junit:4.12'
     runtime('org.postgresql:postgresql')
 }
 
 
-// In this section you declare where to find the dependencies of your project
-repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
-}
 
 wrapper {
     gradleVersion = '5.1.1' // Желаемая версия
