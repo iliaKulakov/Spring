@@ -4,16 +4,13 @@ plugins {
 
 version 'unspecified'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.2.RELEASE'
-    runtime('org.postgresql:postgresql')
-    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
 }
