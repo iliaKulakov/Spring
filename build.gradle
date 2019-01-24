@@ -1,17 +1,17 @@
 
 plugins {
-    id 'java'
-    id 'application'
-    id 'org.springframework.boot' version '2.1.0.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id "java"
+    id "application"
+    id "org.springframework.boot" version "2.1.0.RELEASE"
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
 }
 
-mainClassName = 'io.github.io.github.personal_finance.App'
+mainClassName = "io.github.io.github.personal_finance.App"
 
 
 bootJar {
-    baseName = 'personal-finance-service'
-    version = '0.0.1'
+    baseName = "personal-finance-service"
+    version = "0.0.1"
 }
 
 sourceCompatibility = 11
@@ -22,25 +22,25 @@ repositories {
 }
 
 ext {
-    hibernateV = '5.4.0.Final'
+    hibernateV = "5.4.0.Final"
 }
 
 dependencies {
-    implementation 'com.google.guava:guava:23.0'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "com.google.guava:guava:23.0"
+    implementation "org.springframework.boot:spring-boot-starter-web"
 
 
-    implementation 'org.hibernate:hibernate-core:${hibernateV}'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation "org.hibernate:hibernate-core:${hibernateV}"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
 
     // Use JUnit test framework
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'junit:junit:4.12'
-    runtime('org.postgresql:postgresql')
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "junit:junit:4.12"
+    runtime("org.postgresql:postgresql")
 }
 
 
 
 wrapper {
-    gradleVersion = '5.1.1' // Желаемая версия
+    gradleVersion = "5.1.1" // Желаемая версия
 }
