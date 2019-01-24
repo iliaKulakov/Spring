@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserAutoRepository extends JpaRepository<UserOne, Long> {
 
+
     UserOne findUserssByID(Long id);
 }
