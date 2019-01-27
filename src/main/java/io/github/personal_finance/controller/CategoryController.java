@@ -1,7 +1,9 @@
 package io.github.personal_finance.controller;
 
 import io.github.personal_finance.controller.dto.CategoryCreateInfo;
+import io.github.personal_finance.controller.dto.CategoryUpdateInfo;
 import io.github.personal_finance.controller.dto.UserCreateDTO;
+import io.github.personal_finance.controller.dto.UserUpdateDTO;
 import io.github.personal_finance.domain.Category;
 import io.github.personal_finance.domain.User;
 import io.github.personal_finance.repos.CategoryRepository;
@@ -47,5 +49,23 @@ public class CategoryController {
         return category;
     }
 
+
+    @ResponseBody
+    @PutMapping(value = "/{id}")
+    public Category updateCategoryById(@PathVariable(value = "id") Long id, @RequestBody CategoryUpdateInfo categoryUpdateInfo) {
+        Category category1 = this.categoryRepository.findCategoryByid(id);
+
+        category1.setName(categoryUpdateInfo.getName());
+
+        category1 = this.categoryRepository.save(category1);
+
+        return category1;
+    }
+
+    @ResponseBody
+    @DeleteMapping(value = "/{id}")
+    public void updateCategoryById(@PathVariable(value = "id") Long id) {
+        this.categoryRepository.deleteById(id);
+    }
 
 }
