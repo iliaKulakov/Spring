@@ -22,9 +22,6 @@ public class CategoryController {
         this.categoryRepository = categoryRepository;
     }
 
-
-
-
     @ResponseBody
     @GetMapping
     public List<Category> getAllCategory() {
@@ -32,6 +29,15 @@ public class CategoryController {
 
         return categories;
     }
+
+    @ResponseBody
+    @GetMapping(value = "/{id}")
+    public Category getCategoryById(@PathVariable(value = "id") Long id) {
+        Category category = this.categoryRepository.findCategoryByid(id);
+
+        return category;
+    }
+
 
     @ResponseBody
     @PostMapping
