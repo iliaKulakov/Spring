@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "59d616bc-cff4-45c9-8f53-e6a033f7d911",
+		"name": "Fin_app_test_expence_table",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Expence info",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"category_id\": \"123\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/expence",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"expence"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
