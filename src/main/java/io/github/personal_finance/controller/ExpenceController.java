@@ -30,7 +30,6 @@ public class ExpenceController {
         List<Expence> categories = this.expenceRepository.findAll();
 
         return categories;
-
     }
 
     @ResponseBody
