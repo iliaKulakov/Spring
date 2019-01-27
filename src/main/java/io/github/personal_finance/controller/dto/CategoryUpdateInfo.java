@@ -1,6 +1,8 @@
 package io.github.personal_finance.controller.dto;
 
-public class CategoryUpdateInfo {
+import java.io.Serializable;
+
+public class CategoryUpdateInfo implements Serializable {
 
 
     private String name;

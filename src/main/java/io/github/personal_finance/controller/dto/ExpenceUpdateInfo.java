@@ -1,6 +1,8 @@
 package io.github.personal_finance.controller.dto;
 
-public class ExpenceUpdateInfo {
+import java.io.Serializable;
+
+public class ExpenceUpdateInfo implements Serializable {
 
     private long category_id;
 
