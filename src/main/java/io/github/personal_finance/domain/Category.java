@@ -1,6 +1,5 @@
 package io.github.personal_finance.domain;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
