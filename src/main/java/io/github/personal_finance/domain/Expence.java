@@ -15,45 +15,9 @@ public class Expence {
     @JoinColumn(name = "category_id")
     private Category category;
 
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "expence")
     @Column(name = "user_id")
     private List<User> users;
-
-   // public Expence(Category category_id) {
-   //     this.category = category_id;
-   // }
-
-
-/*
-    public Expence() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }*/
 
     public Expence(Category category) {
         this.category = category;
