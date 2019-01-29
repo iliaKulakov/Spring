@@ -2,22 +2,29 @@ package io.github.personal_finance.domain;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "users_seq", sequenceName = "users_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
     private long id;
 
-    @Column(name = "username")
-    private String username;
+    //@NotNull(message = "name of user can't be empty")
+    @Column(name = "name", length = 256)
+    private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "expence_id")
+    private Expence expence;
 
     public User() {
     }
 
-    public User(String username) {
-        this.username = username;
+    public User(String name) {
+        this.name = name;
     }
 
     public long getId() {
@@ -25,12 +32,25 @@ public class User {
     }
 
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setExpence(Expence expence) {
+        this.expence = expence;
+    }
+
+
     public String getUsername() {
-        return username;
+        return name;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.name = username;
     }
 
 }
