@@ -20,7 +20,8 @@ public class Expence {
     @Column(name = "user_id")
     private List<User> users;
 
-
+    public Expence() {
+    }
 
     public Expence(Category category) {
         this.category = category;

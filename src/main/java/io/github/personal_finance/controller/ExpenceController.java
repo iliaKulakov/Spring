@@ -35,4 +35,10 @@ public class ExpenceController {
         return expence;
     }
 
+    @ResponseBody
+    @DeleteMapping(value = "/{id}")
+    public void updateExpenceTableById(@PathVariable(value = "id") Long id) {
+        this.expenceRepository.deleteById(id);
+    }
+
 }
