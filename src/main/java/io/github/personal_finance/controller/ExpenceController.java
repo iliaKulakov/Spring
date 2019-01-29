@@ -56,7 +56,12 @@ public class ExpenceController {
         return expence;
     }
 
+    @ResponseBody
+    @GetMapping(value = "/{id}")
+    public Expence getExpenceById(@PathVariable(value = "id") Long id) {
+        Expence expence = this.expenceRepository.findExpenceByid(id);
 
-
+        return expence;
+    }
 
 }
