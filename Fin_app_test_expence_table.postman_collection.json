@@ -34,6 +34,85 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Delete Expence",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/expence/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"expence",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Expence table",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"category_id\": \"524555\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/expence/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"expence",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Expence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8090/expence/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"expence",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
