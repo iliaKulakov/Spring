@@ -11,7 +11,7 @@ public class Expence {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "expence_seq")
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
