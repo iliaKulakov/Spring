@@ -1,7 +1,5 @@
 package io.github.personal_finance.domain;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 
 
@@ -14,7 +12,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
     private long id;
 
-   //@NotNull(message = "name of user can't be empty")
+    //@NotNull(message = "name of user can't be empty")
     @Column(name = "name", length = 256)
     private String name;
 
