@@ -1,4 +1,4 @@
-package io.github.personal_finance.repos;
+package io.github.personal_finance.repository;
 
 import io.github.personal_finance.domain.Expence;
 import org.springframework.data.jpa.repository.JpaRepository;

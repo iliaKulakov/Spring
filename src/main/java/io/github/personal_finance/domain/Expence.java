@@ -1,7 +1,10 @@
 package io.github.personal_finance.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "expence")
@@ -11,20 +14,29 @@ public class Expence {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "expence_seq")
     private long id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JsonIgnore
+    @NotNull(message = "category can't be empty")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @JsonIgnore
+    @NotNull(message = "user can't be empty")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "expence")
-    @Column(name = "user_id")
-    private List<User> users;
+    @NotNull(message = "amount can't be empty")
+    @Column(name = "amount")
+    private BigDecimal amount;
 
     public Expence() {
     }
 
-    public Expence(Category category) {
+    public Expence(@NotNull(message = "category can't be empty") Category category, @NotNull(message = "user can't be empty") User user, @NotNull(message = "amount can't be empty") BigDecimal amount) {
         this.category = category;
+        this.user = user;
+        this.amount = amount;
     }
 
     public long getId() {
@@ -39,11 +51,19 @@ public class Expence {
         this.category = category;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }

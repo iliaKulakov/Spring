@@ -1,6 +1,9 @@
 package io.github.personal_finance.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -16,9 +19,10 @@ public class User {
     @Column(name = "name", length = 256)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "expence_id")
-    private Expence expence;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @Column(name = "user_id")
+    private List<Expence> expences;
 
     public User() {
     }
@@ -40,8 +44,11 @@ public class User {
         this.name = name;
     }
 
-    public void setExpence(Expence expence) {
-        this.expence = expence;
+    public List<Expence> getExpences() {
+        return expences;
     }
 
+    public void setExpences(List<Expence> expences) {
+        this.expences = expences;
+    }
 }
