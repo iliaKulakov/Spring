@@ -44,13 +44,4 @@ public class User {
         this.expence = expence;
     }
 
-
-    public String getUsername() {
-        return name;
-    }
-
-    public void setUsername(String username) {
-        this.name = username;
-    }
-
 }

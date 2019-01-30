@@ -42,7 +42,7 @@ public class UsersController {
     public User updateUserById(@PathVariable(value = "id") Long id, @RequestBody UserUpdateDTO userUpdateDTO) {
         User user = this.usersRepository.findUserById(id);
 
-        user.setUsername(userUpdateDTO.getUsername());
+        user.setName(userUpdateDTO.getUsername());
 
         user = this.usersRepository.save(user);
 
