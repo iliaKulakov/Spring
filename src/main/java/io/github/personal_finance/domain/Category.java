@@ -21,7 +21,7 @@ public class Category {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     @Column(name = "expence_id")
-    private List<Expence> expences;
+    private List<Expense> expenses;
 
     public Category() {
     }

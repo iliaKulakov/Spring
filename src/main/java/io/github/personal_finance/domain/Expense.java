@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "expence")
-public class Expence {
+public class Expense {
     @Id
     @SequenceGenerator(name = "expence_seq", sequenceName = "expence_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "expence_seq")
@@ -30,10 +30,10 @@ public class Expence {
     @Column(name = "amount")
     private BigDecimal amount;
 
-    public Expence() {
+    public Expense() {
     }
 
-    public Expence(@NotNull(message = "category can't be empty") Category category, @NotNull(message = "user can't be empty") User user, @NotNull(message = "amount can't be empty") BigDecimal amount) {
+    public Expense(@NotNull(message = "category can't be empty") Category category, @NotNull(message = "user can't be empty") User user, @NotNull(message = "amount can't be empty") BigDecimal amount) {
         this.category = category;
         this.user = user;
         this.amount = amount;

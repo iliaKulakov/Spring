@@ -22,7 +22,7 @@ public class User {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @Column(name = "user_id")
-    private List<Expence> expences;
+    private List<Expense> expenses;
 
     public User() {
     }
@@ -44,11 +44,11 @@ public class User {
         this.name = name;
     }
 
-    public List<Expence> getExpences() {
-        return expences;
+    public List<Expense> getExpenses() {
+        return expenses;
     }
 
-    public void setExpences(List<Expence> expences) {
-        this.expences = expences;
+    public void setExpenses(List<Expense> expenses) {
+        this.expenses = expenses;
     }
 }

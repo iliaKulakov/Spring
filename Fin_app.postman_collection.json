@@ -234,17 +234,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"username\": \"Test TesT\"}"
+							"raw": "{\"name\": \"Test TesT\"}"
 						},
 						"url": {
-							"raw": "http://localhost:8090/users/1",
+							"raw": "http://localhost:8090/categories/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8090",
 							"path": [
-								"users",
+								"categories",
 								"1"
 							]
 						},
@@ -295,17 +295,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"category_id\": \"123\"}"
+							"raw": "{\n\t\"categoryId\": \"1\",\n\t\"userId\": 1,\n\t\"amount\": 100\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8090/expence",
+							"raw": "http://localhost:8090/expense",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8090",
 							"path": [
-								"expence"
+								"expense"
 							]
 						}
 					},
@@ -321,14 +321,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8090/expence/1",
+							"raw": "http://localhost:8090/expense/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8090",
 							"path": [
-								"expence",
+								"expense",
 								"1"
 							]
 						}
@@ -349,18 +349,18 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"category_id\": \"524555\"}"
+							"raw": "{\n\t\"categoryId\": \"1\",\n\t\"userId\": 1,\n\t\"amount\": 10000\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8090/expence/1",
+							"raw": "http://localhost:8090/expense/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8090",
 							"path": [
-								"expence",
-								"1"
+								"expense",
+								"3"
 							]
 						}
 					},
@@ -376,14 +376,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8090/expence/",
+							"raw": "http://localhost:8090/expense/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8090",
 							"path": [
-								"expence",
+								"expense",
 								""
 							]
 						}
