@@ -1,7 +1,9 @@
 package io.github.personal_finance.controller;
 
 import io.github.personal_finance.controller.dto.ArrivalCreateInfo;
+import io.github.personal_finance.controller.dto.ArrivalUpdateInfo;
 import io.github.personal_finance.controller.dto.ExpenceCreateInfo;
+import io.github.personal_finance.controller.dto.ExpenceUpdateInfo;
 import io.github.personal_finance.domain.Arrival;
 import io.github.personal_finance.domain.Category;
 import io.github.personal_finance.domain.Expense;
@@ -51,6 +53,35 @@ public class ArrivalController {
             arrival = this.arrivalRepository.save(arrival);
             return arrival;
 
+    }
+
+    @ResponseBody
+    @DeleteMapping(value = "/{id}")
+    public void updateArrivalInformationInTable(@PathVariable(value = "id") Long id){
+            this.arrivalRepository.deleteById(id);
+    }
+
+
+    @ResponseBody
+    @PutMapping(value = "/{id}")
+    public Arrival updateArrivalInformationInTable(@PathVariable(value = "id") Long id, @RequestBody ArrivalUpdateInfo arrivalUpdateInfo)
+    {
+        Category category = this.categoryRepository.findCategoryById(arrivalUpdateInfo.getCategoryId());
+        Arrival arrival = this.arrivalRepository.findArrivalByid(id);
+
+        arrival.setCategory(category);
+        arrival.setAmount(arrivalUpdateInfo.getAmount());
+        arrival = this.arrivalRepository.save(arrival);
+        return arrival;
+    }
+
+
+    @ResponseBody
+    @GetMapping(value = "/{id}")
+    public Arrival getArrivalById(@PathVariable(value = "id") Long id) {
+        Arrival arrival = this.arrivalRepository.findArrivalByid(id);
+
+        return arrival;
     }
 
 

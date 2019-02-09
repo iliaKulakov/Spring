@@ -63,4 +63,12 @@ public class Arrival {
   public void setId(long id) {
     this.id = id;
   }
+
+  public void setCategory(Category category) {
+    this.category = category;
+  }
+
+  public Category getCategory() {
+    return category;
+  }
 }
