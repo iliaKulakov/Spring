@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5dc48f69-5fd3-451e-9646-2b5f8a5c9599",
+		"_postman_id": "a6cb6b91-f67b-481c-9e89-fe0f23f25f1a",
 		"name": "Fin_app",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -385,6 +385,89 @@
 							"path": [
 								"expense",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Arrival",
+			"item": [
+				{
+					"name": "Get Arrivals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8090/arrival/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"arrival",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Arrival info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"categoryId\": \"1\",\n\t\"userId\": 1,\n\t\"amount\": 100\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/arrival",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"arrival"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Arrivalsa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8090/arrival/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"arrival",
+								"3"
 							]
 						}
 					},
