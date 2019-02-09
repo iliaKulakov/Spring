@@ -24,13 +24,20 @@ public class Arrival {
   private User user;
 
 
+  @JsonIgnore
+  @NotNull(message = "category can't be empty")
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "category_id")//вопрос
+  private Category category;
+
+
   public Arrival() {
   }
 
-  public Arrival(long id, @NotNull(message = "amount can't be empty") BigDecimal amount, User user) {
-    this.id = id;
+  public Arrival(@NotNull(message = "amount can't be empty") BigDecimal amount, User user, @NotNull(message = "category can't be empty") Category category) {
     this.amount = amount;
     this.user = user;
+    this.category = category;
   }
 
   public BigDecimal getAmount() {

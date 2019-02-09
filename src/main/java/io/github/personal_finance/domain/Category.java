@@ -23,6 +23,12 @@ public class Category {
     @Column(name = "category_id")
     private List<Expense> expenses;
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    @Column(name = "category_id")
+    private List<Arrival> arrivals;
+
+
     public Category() {
     }
 
