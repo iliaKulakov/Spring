@@ -19,8 +19,8 @@ public class Category {
     private String name;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
-    @Column(name = "expence_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")//вопрос
+    @Column(name = "category_id")
     private List<Expense> expenses;
 
     public Category() {

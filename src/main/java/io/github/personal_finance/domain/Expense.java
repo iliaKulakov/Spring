@@ -17,7 +17,7 @@ public class Expense {
     @JsonIgnore
     @NotNull(message = "category can't be empty")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id")//вопрос
     private Category category;
 
     @JsonIgnore

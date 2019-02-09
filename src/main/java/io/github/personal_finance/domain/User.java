@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
-
 @Entity
 @Table(name = "users")
 public class User {
@@ -21,8 +20,22 @@ public class User {
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    @Column(name = "user_id")
+    @Column(name = "user_id")//это в таблице Expence? зачем если есть маппинг
     private List<Expense> expenses;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @Column(name = "user_id")
+    private List<Arrival> arrivals; //что мы здесь храним
+
+
+    public List<Arrival> getArrivals() {
+        return arrivals;
+    }
+
+    public void setArrivals(List<Arrival> arrivals) {
+        this.arrivals = arrivals;
+    }
 
     public User() {
     }
