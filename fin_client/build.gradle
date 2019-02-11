@@ -27,8 +27,4 @@ targetCompatibility = 1.11
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-amqp")
     testCompile("junit:junit")
-
-    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonV}"
-    implementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonV}"
-    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonV}"
 }

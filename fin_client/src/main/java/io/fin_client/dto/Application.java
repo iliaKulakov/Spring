@@ -1,10 +1,11 @@
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
+package io.fin_client.dto;
+
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 public class Application {

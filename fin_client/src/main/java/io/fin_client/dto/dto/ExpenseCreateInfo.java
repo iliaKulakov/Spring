@@ -1,4 +1,4 @@
-package dto;
+package io.fin_client.dto.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

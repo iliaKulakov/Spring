@@ -1,15 +1,16 @@
+package io.fin_client.dto;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dto.ExpenseCreateInfo;
+import io.fin_client.dto.dto.ExpenseCreateInfo;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-//@Component
+@Component
 public class Runner implements CommandLineRunner {
 
     private final RabbitTemplate rabbitTemplate;
