@@ -23,20 +23,28 @@ repositories {
 
 ext {
     hibernateV = "5.4.0.Final"
+    jacksonV = "2.9.8"
+    guavaV = "23.0"
 }
 
 dependencies {
-    implementation "com.google.guava:guava:23.0"
+    implementation "com.google.guava:guava:${guavaV}"
     implementation "org.springframework.boot:spring-boot-starter-web"
 
 
     implementation "org.hibernate:hibernate-core:${hibernateV}"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-amqp"
+
+    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonV}"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonV}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonV}"
 
     // Use JUnit test framework
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation "junit:junit:4.12"
     runtime("org.postgresql:postgresql")
+    
 }
 
 

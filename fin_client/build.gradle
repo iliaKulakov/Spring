@@ -1,5 +1,3 @@
-
-
 buildscript {
     repositories {
         mavenCentral()
@@ -29,7 +27,8 @@ targetCompatibility = 1.11
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-amqp")
     testCompile("junit:junit")
-    compile group: 'com.rabbitmq', name: 'amqp-client', version: '5.5.2'
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
+
+    implementation "com.fasterxml.jackson.core:jackson-core:${jacksonV}"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonV}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonV}"
 }
