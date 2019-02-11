@@ -2,11 +2,8 @@ package io.github.personal_finance.controller;
 
 import io.github.personal_finance.controller.dto.ArrivalCreateInfo;
 import io.github.personal_finance.controller.dto.ArrivalUpdateInfo;
-import io.github.personal_finance.controller.dto.ExpenceCreateInfo;
-import io.github.personal_finance.controller.dto.ExpenceUpdateInfo;
 import io.github.personal_finance.domain.Arrival;
 import io.github.personal_finance.domain.Category;
-import io.github.personal_finance.domain.Expense;
 import io.github.personal_finance.domain.User;
 import io.github.personal_finance.repository.ArrivalRepository;
 import io.github.personal_finance.repository.CategoryRepository;
@@ -21,13 +18,13 @@ import java.util.List;
 @RequestMapping("/arrival")
 public class ArrivalController {
 
-        private ExpenseRepository expenseRepository;
-        private ArrivalRepository arrivalRepository;
-        private CategoryRepository categoryRepository;
-        private UsersRepository usersRepository;
+    private ExpenseRepository expenseRepository;
+    private ArrivalRepository arrivalRepository;
+    private CategoryRepository categoryRepository;
+    private UsersRepository usersRepository;
 
-        @Autowired
-        public ArrivalController(ExpenseRepository expenseRepository, ArrivalRepository arrivalRepository, CategoryRepository categoryRepository, UsersRepository usersRepository) {
+    @Autowired
+    public ArrivalController(ExpenseRepository expenseRepository, ArrivalRepository arrivalRepository, CategoryRepository categoryRepository, UsersRepository usersRepository) {
         this.expenseRepository = expenseRepository;
         this.arrivalRepository = arrivalRepository;
         this.categoryRepository = categoryRepository;
@@ -44,28 +41,27 @@ public class ArrivalController {
 
     @ResponseBody
     @PostMapping
-    public Arrival createArrival(@RequestBody ArrivalCreateInfo arrivalCreateInfo){
+    public Arrival createArrival(@RequestBody ArrivalCreateInfo arrivalCreateInfo) {
 
-            User user = this.usersRepository.findUserById(arrivalCreateInfo.getUserId());
-            Category category = this.categoryRepository.findCategoryById(arrivalCreateInfo.getCategoryId());
-            Arrival arrival = new Arrival(arrivalCreateInfo.getAmount(),user,category);
+        User user = this.usersRepository.findUserById(arrivalCreateInfo.getUserId());
+        Category category = this.categoryRepository.findCategoryById(arrivalCreateInfo.getCategoryId());
+        Arrival arrival = new Arrival(arrivalCreateInfo.getAmount(), user, category);
 
-            arrival = this.arrivalRepository.save(arrival);
-            return arrival;
+        arrival = this.arrivalRepository.save(arrival);
+        return arrival;
 
     }
 
     @ResponseBody
     @DeleteMapping(value = "/{id}")
-    public void updateArrivalInformationInTable(@PathVariable(value = "id") Long id){
-            this.arrivalRepository.deleteById(id);
+    public void updateArrivalInformationInTable(@PathVariable(value = "id") Long id) {
+        this.arrivalRepository.deleteById(id);
     }
 
 
     @ResponseBody
     @PutMapping(value = "/{id}")
-    public Arrival updateArrivalInformationInTable(@PathVariable(value = "id") Long id, @RequestBody ArrivalUpdateInfo arrivalUpdateInfo)
-    {
+    public Arrival updateArrivalInformationInTable(@PathVariable(value = "id") Long id, @RequestBody ArrivalUpdateInfo arrivalUpdateInfo) {
         Category category = this.categoryRepository.findCategoryById(arrivalUpdateInfo.getCategoryId());
         Arrival arrival = this.arrivalRepository.findArrivalByid(id);
 
@@ -83,8 +79,6 @@ public class ArrivalController {
 
         return arrival;
     }
-
-
 
 
 }

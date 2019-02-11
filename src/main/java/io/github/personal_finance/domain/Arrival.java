@@ -10,65 +10,65 @@ import java.math.BigDecimal;
 @Table(name = "Arrival_money")
 public class Arrival {
 
-  @Id
-  @SequenceGenerator(name = "arrival_seq", sequenceName = "arrival_seq", allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "arrival_seq")
-  private long id;
+    @Id
+    @SequenceGenerator(name = "arrival_seq", sequenceName = "arrival_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "arrival_seq")
+    private long id;
 
-  @NotNull(message = "amount can't be empty")
-  @Column(name = "amount")
-  private BigDecimal amount;
+    @NotNull(message = "amount can't be empty")
+    @Column(name = "amount")
+    private BigDecimal amount;
 
-  @ManyToOne
-  @JoinColumn(name = "user_id")
-  private User user;
-
-
-  @JsonIgnore
-  @NotNull(message = "category can't be empty")
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "category_id")//вопрос
-  private Category category;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
-  public Arrival() {
-  }
+    @JsonIgnore
+    @NotNull(message = "category can't be empty")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")//вопрос
+    private Category category;
 
-  public Arrival(@NotNull(message = "amount can't be empty") BigDecimal amount, User user, @NotNull(message = "category can't be empty") Category category) {
-    this.amount = amount;
-    this.user = user;
-    this.category = category;
-  }
 
-  public BigDecimal getAmount() {
-    return amount;
-  }
+    public Arrival() {
+    }
 
-  public void setAmount(BigDecimal amount) {
-    this.amount = amount;
-  }
+    public Arrival(@NotNull(message = "amount can't be empty") BigDecimal amount, User user, @NotNull(message = "category can't be empty") Category category) {
+        this.amount = amount;
+        this.user = user;
+        this.category = category;
+    }
 
-  public User getUser() {
-    return user;
-  }
+    public BigDecimal getAmount() {
+        return amount;
+    }
 
-  public void setUser(User user) {
-    this.user = user;
-  }
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 
-  public long getId() {
-    return id;
-  }
+    public User getUser() {
+        return user;
+    }
 
-  public void setId(long id) {
-    this.id = id;
-  }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-  public void setCategory(Category category) {
-    this.category = category;
-  }
+    public long getId() {
+        return id;
+    }
 
-  public Category getCategory() {
-    return category;
-  }
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }

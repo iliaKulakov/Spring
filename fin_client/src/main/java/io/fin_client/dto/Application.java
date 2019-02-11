@@ -5,7 +5,6 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 public class Application {
@@ -15,6 +14,10 @@ public class Application {
     // Имя очереди для отправки сообщения
     static final String queueName = "personal-finance";
 
+    public static void main(String[] args) throws InterruptedException {
+        SpringApplication.run(Application.class, args).close();
+    }
+
     @Bean
     Queue queue() {
         return new Queue(queueName, false);
@@ -23,10 +26,6 @@ public class Application {
     @Bean
     TopicExchange exchange() {
         return new TopicExchange(topicExchangeName);
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        SpringApplication.run(Application.class, args).close();
     }
 
 }

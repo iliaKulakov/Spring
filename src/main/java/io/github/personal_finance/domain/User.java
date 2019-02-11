@@ -29,19 +29,19 @@ public class User {
     private List<Arrival> arrivals; //что мы здесь храним
 
 
+    public User() {
+    }
+
+    public User(String name) {
+        this.name = name;
+    }
+
     public List<Arrival> getArrivals() {
         return arrivals;
     }
 
     public void setArrivals(List<Arrival> arrivals) {
         this.arrivals = arrivals;
-    }
-
-    public User() {
-    }
-
-    public User(String name) {
-        this.name = name;
     }
 
     public long getId() {

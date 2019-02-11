@@ -3,11 +3,11 @@ package io.github.personal_finance.controller.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ArrivalCreateInfo implements Serializable{
+public class ArrivalCreateInfo implements Serializable {
 
-        private Long categoryId;
-        private BigDecimal amount;
-        private Long userId;
+    private Long categoryId;
+    private BigDecimal amount;
+    private Long userId;
 
     public ArrivalCreateInfo() {
     }
