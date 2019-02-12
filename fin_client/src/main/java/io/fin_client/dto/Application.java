@@ -18,6 +18,8 @@ public class Application {
         SpringApplication.run(Application.class, args).close();
     }
 
+
+
     @Bean
     Queue queue() {
         return new Queue(queueName, false);
