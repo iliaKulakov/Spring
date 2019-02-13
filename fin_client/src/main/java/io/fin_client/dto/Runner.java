@@ -14,7 +14,9 @@ import java.math.BigDecimal;
 public class Runner implements CommandLineRunner {
 
     private final RabbitTemplate rabbitTemplate;
-    Long inputId;
+    Long inputCategoryId;
+    BigDecimal inputAmount;
+    Long userId;
 
     @Autowired
     public Runner(RabbitTemplate rabbitTemplate) {
@@ -27,10 +29,12 @@ public class Runner implements CommandLineRunner {
         ObjectMapper mapper = new ObjectMapper();
 // Инициализация DTO
       KeyBoardInput keyBoardInput = new KeyBoardInput();
-      inputId = keyBoardInput.enterFromKeyBoard();
+      inputCategoryId = keyBoardInput.enterCategoryIdFromKeyBoard();
+      inputAmount = keyBoardInput.enterAmountFromKeyBoard();
+      userId = keyBoardInput.enterUserIdFromKeyBoard();
 
       //  ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(1L, BigDecimal.valueOf(100), 1L);
-        ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(inputId, BigDecimal.valueOf(100), inputId);
+        ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(inputCategoryId, inputAmount, userId);
 // Конвертация POJO в JSON представление
         String expenseJsonRepresentation = mapper.writeValueAsString(expenseCreateInfo);
 // Отправка сообщения в очередь RabbitMQ
