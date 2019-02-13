@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 public class Runner implements CommandLineRunner {
 
     private final RabbitTemplate rabbitTemplate;
+    Long inputId;
 
     @Autowired
     public Runner(RabbitTemplate rabbitTemplate) {
@@ -25,7 +26,11 @@ public class Runner implements CommandLineRunner {
 // Создание мапера для вызова Jackson
         ObjectMapper mapper = new ObjectMapper();
 // Инициализация DTO
-        ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(1L, BigDecimal.valueOf(100), 1L);
+      KeyBoardInput keyBoardInput = new KeyBoardInput();
+      inputId = keyBoardInput.enterFromKeyBoard();
+
+      //  ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(1L, BigDecimal.valueOf(100), 1L);
+        ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(inputId, BigDecimal.valueOf(100), inputId);
 // Конвертация POJO в JSON представление
         String expenseJsonRepresentation = mapper.writeValueAsString(expenseCreateInfo);
 // Отправка сообщения в очередь RabbitMQ
