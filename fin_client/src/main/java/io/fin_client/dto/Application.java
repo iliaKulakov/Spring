@@ -1,10 +1,12 @@
 package io.fin_client.dto;
 
+
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
 public class Application {
@@ -16,8 +18,9 @@ public class Application {
 
     public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(Application.class, args).close();
-    }
+        SpringApplication.run(Application.class, args);
 
+    }
 
 
     @Bean
@@ -29,5 +32,10 @@ public class Application {
     TopicExchange exchange() {
         return new TopicExchange(topicExchangeName);
     }
+
+
+
+
+
 
 }

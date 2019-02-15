@@ -33,6 +33,8 @@ public class ExpenseReceiver {
         Category category = this.categoryRepository.findCategoryById(expenceCreateInfo.getCategoryId());
         User user = this.usersRepository.findUserById(expenceCreateInfo.getUserId());
         Expense expense = new Expense(category, user, expenceCreateInfo.getAmount());
-        this.expenseRepository.save(expense);
+        System.out.println("test" + expense);
+
+       // this.expenseRepository.save(expense);
     }
 }

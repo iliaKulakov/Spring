@@ -41,4 +41,13 @@ public class ExpenseCreateInfo implements Serializable {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "ExpenseCreateInfo{" +
+                "categoryId=" + categoryId +
+                ", amount=" + amount +
+                ", userId=" + userId +
+                '}';
+    }
 }

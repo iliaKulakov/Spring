@@ -32,8 +32,7 @@ public class Runner implements CommandLineRunner {
       inputCategoryId = keyBoardInput.enterCategoryIdFromKeyBoard();
       inputAmount = keyBoardInput.enterAmountFromKeyBoard();
       userId = keyBoardInput.enterUserIdFromKeyBoard();
-
-      //  ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(1L, BigDecimal.valueOf(100), 1L);
+     //ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(100L,BigDecimal.valueOf(100), 10);
         ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(inputCategoryId, inputAmount, userId);
 // Конвертация POJO в JSON представление
         String expenseJsonRepresentation = mapper.writeValueAsString(expenseCreateInfo);

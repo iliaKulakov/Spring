@@ -21,7 +21,7 @@ public class Expense {
     private Category category;
 
     @JsonIgnore
-    @NotNull(message = "user can't be empty")
+  //  @NotNull(message = "user can't be empty")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
