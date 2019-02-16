@@ -35,6 +35,8 @@ public class ExpenseReceiver {
         Expense expense = new Expense(category, user, expenceCreateInfo.getAmount());
         System.out.println("test" + expense);
 
-       // this.expenseRepository.save(expense);
+        this.expenseRepository.save(expense);
+
+
     }
 }

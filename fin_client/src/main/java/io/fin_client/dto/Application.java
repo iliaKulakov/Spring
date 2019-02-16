@@ -22,7 +22,6 @@ public class Application {
 
     }
 
-
     @Bean
     Queue queue() {
         return new Queue(queueName, false);
@@ -32,10 +31,5 @@ public class Application {
     TopicExchange exchange() {
         return new TopicExchange(topicExchangeName);
     }
-
-
-
-
-
 
 }

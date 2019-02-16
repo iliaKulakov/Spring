@@ -1,50 +1,44 @@
 package io.fin_client.dto.dto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.MessageProperties;
+import com.rabbitmq.client.*;
 import io.github.personal_finance.controller.dto.ExpenceCreateInfo;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class NewReceiver {
 
     private static final String TASK_QUEUE_NAME = "personal-finance";
+    static final String topicExchangeName = "personal-finance";
 
     public static void main(String[] argv) throws Exception {
+
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        try (Connection connection = factory.newConnection();
-             Channel channel = connection.createChannel()) {
-            channel.queueDeclare(TASK_QUEUE_NAME, false, false, false, null);
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
+        channel.queueBind(TASK_QUEUE_NAME, topicExchangeName, "");
+        System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
 
-            String message = String.join(" ", argv);
+        //Как этот кусок работает
+        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+            String message = new String(delivery.getBody(), "UTF-8");
+            System.out.println(" [x] Received '" + message + "'");
+        };
 
-           /* channel.basicPublish("", TASK_QUEUE_NAME,
-                    MessageProperties.PERSISTENT_TEXT_PLAIN,
-                    message.getBytes(StandardCharsets.UTF_8));
-            System.out.println(" [x] Sent '" + message + "'");*/
+        //channel.basicConsume(TASK_QUEUE_NAME, true, deliverCallback, consumerTag -> { });
+        //почему
 
-            channel.basicPublish("", TASK_QUEUE_NAME,
-                    MessageProperties.PERSISTENT_TEXT_PLAIN,
-                    message.getBytes());
-            System.out.println(" [x] Sent '" + message + "'");
+        channel.basicConsume(TASK_QUEUE_NAME, true, deliverCallback, new CancelCallback() {
+            @Override
+            public void handle(String consumerTag) throws IOException {
+            }
+        });
 
-
-           /* ObjectMapper mapper = new ObjectMapper();
-            String message;
-            ExpenceCreateInfo expenceCreateInfo = mapper.readValue(message, ExpenceCreateInfo.class);
-            ExpenceCreateInfo expenceCreateInfo = mapper.readValue(message, ExpenceCreateInfo.class);*/
-
-
-            // ExpenseCreateInfo expenseCreateInfo = new ExpenseCreateInfo(100L, BigDecimal.valueOf(100), 10);
-           // System.out.println("test" + expenceCreateInfo.toString());
-
-        }
 
 
     }
-}
+
+        }
