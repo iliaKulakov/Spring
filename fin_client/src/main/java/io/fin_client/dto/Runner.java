@@ -19,7 +19,6 @@ public class Runner implements CommandLineRunner {
     Long inputCategoryId;
     BigDecimal inputAmount;
     Long userId;
-    ExpenseSender expenseSender;
 
     @Autowired
     public Runner(RabbitTemplate rabbitTemplate) {
@@ -69,7 +68,7 @@ public class Runner implements CommandLineRunner {
 
         ArrivalCreateInfo arrivalCreateInfo = new ArrivalCreateInfo(inputCategoryId,inputAmount,userId);
         String arrivalJsonRepresentation = mapper.writeValueAsString(arrivalCreateInfo);
-        rabbitTemplate.convertAndSend(Application.topicExchangeName,arrivalJsonRepresentation);
+        rabbitTemplate.convertAndSend(Application.topicExchangeNameArrival,arrivalJsonRepresentation);
     }
 
 }

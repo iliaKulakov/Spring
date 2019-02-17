@@ -24,6 +24,8 @@ public class App {
 
     static final String topicExchangeName = "personal-finance";
     static final String queueName = "personal-finance";
+    static final String topicExchangeNameArrival = "personal-finance-arrival";
+    static final String queueNameArrival = "personal-finance-arrival";
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
@@ -38,6 +40,7 @@ public class App {
     TopicExchange exchange() {
         return new TopicExchange(topicExchangeName);
     }
+
 
     @Bean
     Binding binding(Queue queue, TopicExchange exchange) {
@@ -58,6 +61,14 @@ public class App {
     MessageListenerAdapter listenerAdapter(ExpenseReceiver receiver) {
         return new MessageListenerAdapter(receiver, "receiveMessage");
     }
+
+
+
+
+
+
+
+
 }
 
 

@@ -28,6 +28,7 @@ public class ExpenseReceiver {
     }
 
     public void receiveMessage(String message) throws IOException {
+
         ObjectMapper mapper = new ObjectMapper();
         ExpenceCreateInfo expenceCreateInfo = mapper.readValue(message, ExpenceCreateInfo.class);
         Category category = this.categoryRepository.findCategoryById(expenceCreateInfo.getCategoryId());

@@ -15,8 +15,11 @@ public class Application {
 
     // Имя обменника
     static final String topicExchangeName = "personal-finance";
+    static final String topicExchangeNameArrival = "personal-finance-arrival";
+
     // Имя очереди для отправки сообщения
     static final String queueName = "personal-finance";
+    static final String queueNameArrival = "personal-finance-arrival";
 
 
     public static void main(String[] args) throws InterruptedException {
@@ -34,5 +37,14 @@ public class Application {
         return new TopicExchange(topicExchangeName);
     }
 
+    @Bean
+    Queue queueArrival() {
+        return new Queue(queueNameArrival, false);
+    }
+
+    @Bean
+    TopicExchange exchangeArrival() {
+        return new TopicExchange(topicExchangeNameArrival);
+    }
 
 }
