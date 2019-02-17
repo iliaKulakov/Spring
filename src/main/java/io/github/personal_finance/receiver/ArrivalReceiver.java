@@ -12,9 +12,11 @@ import io.github.personal_finance.repository.CategoryRepository;
 import io.github.personal_finance.repository.ExpenseRepository;
 import io.github.personal_finance.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+@Component
 public class ArrivalReceiver {
 
     private final ArrivalRepository arrivalRepository;
