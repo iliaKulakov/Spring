@@ -1,8 +1,10 @@
 package io.fin_client.dto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.fin_client.dto.dto.ArrivalCreateInfo;
 import io.fin_client.dto.dto.ExpenseCreateInfo;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.aop.framework.AopProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -34,7 +36,9 @@ public class Runner implements CommandLineRunner {
         int chooseVariable = in.nextInt();
         if(chooseVariable == ExpenseVariableForChoose) {
                 sendExpenseMessage();
-//
+        }
+        else {
+                sendArrivalMessage();
         }
     }
 
@@ -53,6 +57,19 @@ public class Runner implements CommandLineRunner {
         // Отправка сообщения в очередь RabbitMQ
         rabbitTemplate.convertAndSend(Application.topicExchangeName, expenseJsonRepresentation);
 
+    }
+
+    public void sendArrivalMessage() throws  Exception{
+        ObjectMapper mapper = new ObjectMapper();
+        KeyBoardInput keyBoardInput = new KeyBoardInput();
+
+        inputCategoryId = keyBoardInput.enterCategoryIdFromKeyBoard();
+        inputAmount = keyBoardInput.enterAmountFromKeyBoard();
+        userId = keyBoardInput.enterUserIdFromKeyBoard();
+
+        ArrivalCreateInfo arrivalCreateInfo = new ArrivalCreateInfo(inputCategoryId,inputAmount,userId);
+        String arrivalJsonRepresentation = mapper.writeValueAsString(arrivalCreateInfo);
+        rabbitTemplate.convertAndSend(Application.topicExchangeName,arrivalJsonRepresentation);
     }
 
 }

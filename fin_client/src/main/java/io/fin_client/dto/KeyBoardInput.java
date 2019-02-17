@@ -4,11 +4,10 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class KeyBoardInput {
-
+    //Expense variables
     private Long categoryId;
     private BigDecimal amount;
     private Long userId;
-
 
     public KeyBoardInput() {
     }
@@ -17,7 +16,6 @@ public class KeyBoardInput {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter some number CategoryId: ");
         Long input = in.nextLong();
-      //  System.out.println("Your input is: " + input);
         return input;
     }
 
@@ -34,6 +32,8 @@ public class KeyBoardInput {
         Long userId = in.nextLong();
         return userId;
     }
+
+
 
 
 
