@@ -21,7 +21,6 @@ public class NewReceiver {
         channel.queueBind(TASK_QUEUE_NAME, topicExchangeName, "");
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
-
         //Как этот кусок работает
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
@@ -36,8 +35,6 @@ public class NewReceiver {
             public void handle(String consumerTag) throws IOException {
             }
         });
-
-
 
     }
 
