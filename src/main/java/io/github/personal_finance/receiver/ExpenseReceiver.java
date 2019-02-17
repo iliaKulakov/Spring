@@ -8,8 +8,6 @@ import io.github.personal_finance.domain.User;
 import io.github.personal_finance.repository.CategoryRepository;
 import io.github.personal_finance.repository.ExpenseRepository;
 import io.github.personal_finance.repository.UsersRepository;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

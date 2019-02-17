@@ -2,14 +2,11 @@ package io.github.personal_finance.receiver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.personal_finance.controller.dto.ArrivalCreateInfo;
-import io.github.personal_finance.controller.dto.ExpenceCreateInfo;
 import io.github.personal_finance.domain.Arrival;
 import io.github.personal_finance.domain.Category;
-import io.github.personal_finance.domain.Expense;
 import io.github.personal_finance.domain.User;
 import io.github.personal_finance.repository.ArrivalRepository;
 import io.github.personal_finance.repository.CategoryRepository;
-import io.github.personal_finance.repository.ExpenseRepository;
 import io.github.personal_finance.repository.UsersRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -40,7 +37,7 @@ public class ArrivalReceiver {
         ArrivalCreateInfo arrivalCreateInfo = mapper.readValue(message, ArrivalCreateInfo.class);
         Category category = this.categoryRepository.findCategoryById(arrivalCreateInfo.getCategoryId());
         User user = this.usersRepository.findUserById(arrivalCreateInfo.getUserId());
-        Arrival arrival= new Arrival( arrivalCreateInfo.getAmount(), user, category);
+        Arrival arrival = new Arrival(arrivalCreateInfo.getAmount(), user, category);
         System.out.println("test" + arrival);
         this.arrivalRepository.save(arrival);
     }
