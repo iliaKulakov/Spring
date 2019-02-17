@@ -1,19 +1,21 @@
-package io.github.personal_finance.controller.dto;
+package io.fin_client.dto.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ExpenceUpdateInfo implements Serializable {
+public class ArrivalCreateInfo implements Serializable {
 
     private Long categoryId;
     private BigDecimal amount;
+    private Long userId;
 
-    public ExpenceUpdateInfo() {
+    public ArrivalCreateInfo() {
     }
 
-    public ExpenceUpdateInfo(Long categoryId, BigDecimal amount, Long userId) {
+    public ArrivalCreateInfo(Long categoryId, BigDecimal amount, Long userId) {
         this.categoryId = categoryId;
         this.amount = amount;
+        this.userId = userId;
     }
 
     public Long getCategoryId() {
@@ -30,5 +32,13 @@ public class ExpenceUpdateInfo implements Serializable {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

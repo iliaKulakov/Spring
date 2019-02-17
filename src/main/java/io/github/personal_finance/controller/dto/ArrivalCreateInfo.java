@@ -3,17 +3,13 @@ package io.github.personal_finance.controller.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ExpenceUpdateInfo implements Serializable {
+public class ArrivalCreateInfo implements Serializable {
 
     private Long categoryId;
     private BigDecimal amount;
+    private Long userId;
 
-    public ExpenceUpdateInfo() {
-    }
-
-    public ExpenceUpdateInfo(Long categoryId, BigDecimal amount, Long userId) {
-        this.categoryId = categoryId;
-        this.amount = amount;
+    public ArrivalCreateInfo() {
     }
 
     public Long getCategoryId() {
@@ -30,5 +26,13 @@ public class ExpenceUpdateInfo implements Serializable {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
