@@ -1,0 +1,16 @@
+version: "3.0"
+services:
+  db:
+    image: postgres:10
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgre
+      - POSTGRES_PASSWORD=P@r0v0z
+      - POSTGRES_DB=test
+  rabbitmq:
+    image: rabbitmq:3.7-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+

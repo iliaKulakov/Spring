@@ -3,7 +3,7 @@ package io.github.personal_finance.controller;
 import io.github.personal_finance.controller.dto.UserCreateDTO;
 import io.github.personal_finance.controller.dto.UserUpdateDTO;
 import io.github.personal_finance.domain.User;
-import io.github.personal_finance.repos.UsersRepository;
+import io.github.personal_finance.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +42,7 @@ public class UsersController {
     public User updateUserById(@PathVariable(value = "id") Long id, @RequestBody UserUpdateDTO userUpdateDTO) {
         User user = this.usersRepository.findUserById(id);
 
-        user.setUsername(userUpdateDTO.getUsername());
+        user.setName(userUpdateDTO.getUsername());
 
         user = this.usersRepository.save(user);
 
@@ -62,5 +62,6 @@ public class UsersController {
         user = this.usersRepository.save(user);
         return user;
     }
+
 
 }

@@ -1,4 +1,4 @@
-package io.github.personal_finance.repos;
+package io.github.personal_finance.repository;
 
 
 import io.github.personal_finance.domain.User;
@@ -10,4 +10,6 @@ public interface UsersRepository extends JpaRepository<User, Long> {
 
 
     User findUserById(Long id);
+
+
 }
