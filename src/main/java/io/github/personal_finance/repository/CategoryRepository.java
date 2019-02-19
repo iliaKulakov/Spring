@@ -1,4 +1,4 @@
-package io.github.personal_finance.repos;
+package io.github.personal_finance.repository;
 
 
 import io.github.personal_finance.domain.Category;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    Category findCategoryByid(Long id);
+    Category findCategoryById(Long id);
 
 }
 

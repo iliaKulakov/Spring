@@ -1,7 +1,9 @@
 package io.github.personal_finance.domain;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -16,15 +18,30 @@ public class User {
     @Column(name = "name", length = 256)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "expence_id")
-    private Expence expence;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @Column(name = "user_id")//это в таблице Expence? зачем если есть маппинг
+    private List<Expense> expenses;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @Column(name = "user_id")
+    private List<Arrival> arrivals; //что мы здесь храним
+
 
     public User() {
     }
 
     public User(String name) {
         this.name = name;
+    }
+
+    public List<Arrival> getArrivals() {
+        return arrivals;
+    }
+
+    public void setArrivals(List<Arrival> arrivals) {
+        this.arrivals = arrivals;
     }
 
     public long getId() {
@@ -40,17 +57,11 @@ public class User {
         this.name = name;
     }
 
-    public void setExpence(Expence expence) {
-        this.expence = expence;
+    public List<Expense> getExpenses() {
+        return expenses;
     }
 
-
-    public String getUsername() {
-        return name;
+    public void setExpenses(List<Expense> expenses) {
+        this.expenses = expenses;
     }
-
-    public void setUsername(String username) {
-        this.name = username;
-    }
-
 }

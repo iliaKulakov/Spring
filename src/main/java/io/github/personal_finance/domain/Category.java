@@ -1,5 +1,7 @@
 package io.github.personal_finance.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -12,13 +14,20 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_seq")
     private long id;
 
-    @NotNull(message = "name of user can't be empty")
+    @NotNull(message = "name of category can't be empty")
     @Column(name = "name", length = 256)
     private String name;
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")//вопрос
+    @Column(name = "category_id")
+    private List<Expense> expenses;
+
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
-    @Column(name = "expence_id")
-    private List<Expence> expences;
+    @Column(name = "category_id")
+    private List<Arrival> arrivals;
+
 
     public Category() {
     }
@@ -38,14 +47,6 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Expence> getExpences() {
-        return expences;
-    }
-
-    public void setExpences(List<Expence> expences) {
-        this.expences = expences;
     }
 }
 
