@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+
 @Component
 public class ExpenseReceiver {
 
@@ -27,12 +28,15 @@ public class ExpenseReceiver {
         this.usersRepository = usersRepository;
     }
 
+
     public void receiveMessage(String message) throws IOException {
+
         ObjectMapper mapper = new ObjectMapper();
         ExpenceCreateInfo expenceCreateInfo = mapper.readValue(message, ExpenceCreateInfo.class);
         Category category = this.categoryRepository.findCategoryById(expenceCreateInfo.getCategoryId());
         User user = this.usersRepository.findUserById(expenceCreateInfo.getUserId());
         Expense expense = new Expense(category, user, expenceCreateInfo.getAmount());
+        System.out.println("test" + expense);
         this.expenseRepository.save(expense);
     }
 }
