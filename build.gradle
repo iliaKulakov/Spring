@@ -42,9 +42,11 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testCompile group: 'com.h2database', name: 'h2', version: '1.0.60'
+    testCompile('com.github.fridujo:rabbitmq-mock:1.0.9')
     testImplementation "junit:junit:4.12"
     runtime("org.postgresql:postgresql")
-    
+
 }
 
 
