@@ -8,6 +8,7 @@ import io.github.personal_finance.domain.User;
 import io.github.personal_finance.repository.CategoryRepository;
 import io.github.personal_finance.repository.ExpenseRepository;
 import io.github.personal_finance.repository.UsersRepository;
+import io.github.personal_finance.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +22,15 @@ public class ExpenseController {
     private CategoryRepository categoryRepository;
     private UsersRepository usersRepository;
 
+    private ExpenseService expenseService;
+
     @Autowired
-    public ExpenseController(ExpenseRepository expenseRepository, CategoryRepository categoryRepository, UsersRepository usersRepository) {
+    public ExpenseController(ExpenseRepository expenseRepository, CategoryRepository categoryRepository, UsersRepository usersRepository, ExpenseService expenseService) {
         this.expenseRepository = expenseRepository;
         this.categoryRepository = categoryRepository;
         this.usersRepository = usersRepository;
+
+        this.expenseService = expenseService;
     }
 
     @ResponseBody
@@ -40,11 +45,7 @@ public class ExpenseController {
     @PostMapping
     public Expense createExpense(@RequestBody ExpenceCreateInfo expenceCreateInfo) {
 
-        Category category = this.categoryRepository.findCategoryById(expenceCreateInfo.getCategoryId());
-        User user = this.usersRepository.findUserById(expenceCreateInfo.getUserId());
-
-        Expense expense = new Expense(category, user, expenceCreateInfo.getAmount());
-        expense = this.expenseRepository.save(expense);
+        Expense expense = this.expenseService.createExpense(expenceCreateInfo);
         return expense;
     }
 
@@ -73,7 +74,6 @@ public class ExpenseController {
     @GetMapping(value = "/{id}")
     public Expense getExpenseById(@PathVariable(value = "id") Long id) {
         Expense expense = this.expenseRepository.findExpenceByid(id);
-
         return expense;
     }
 

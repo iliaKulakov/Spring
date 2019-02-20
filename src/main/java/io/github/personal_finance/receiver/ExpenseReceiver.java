@@ -8,6 +8,7 @@ import io.github.personal_finance.domain.User;
 import io.github.personal_finance.repository.CategoryRepository;
 import io.github.personal_finance.repository.ExpenseRepository;
 import io.github.personal_finance.repository.UsersRepository;
+import io.github.personal_finance.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,26 +18,17 @@ import java.io.IOException;
 @Component
 public class ExpenseReceiver {
 
-    private final ExpenseRepository expenseRepository;
-    private final CategoryRepository categoryRepository;
-    private final UsersRepository usersRepository;
+    private final ExpenseService expenseService;
+    private final ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
-    public ExpenseReceiver(ExpenseRepository expenseRepository, CategoryRepository categoryRepository, UsersRepository usersRepository) {
-        this.expenseRepository = expenseRepository;
-        this.categoryRepository = categoryRepository;
-        this.usersRepository = usersRepository;
+    public ExpenseReceiver(ExpenseService expenseService) {
+        this.expenseService = expenseService;
     }
 
 
     public void receiveMessage(String message) throws IOException {
-
-        ObjectMapper mapper = new ObjectMapper();
         ExpenceCreateInfo expenceCreateInfo = mapper.readValue(message, ExpenceCreateInfo.class);
-        Category category = this.categoryRepository.findCategoryById(expenceCreateInfo.getCategoryId());
-        User user = this.usersRepository.findUserById(expenceCreateInfo.getUserId());
-        Expense expense = new Expense(category, user, expenceCreateInfo.getAmount());
-        System.out.println("test" + expense);
-        this.expenseRepository.save(expense);
+        Expense expense = this.expenseService.createExpense(expenceCreateInfo);
     }
 }
