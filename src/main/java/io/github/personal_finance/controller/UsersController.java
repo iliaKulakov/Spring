@@ -62,9 +62,6 @@ public class UsersController {
     @PostMapping
     public User createUser(@RequestBody UserCreateDTO userCreateDTO) {
           User user = this.userService.createUser(userCreateDTO);
-//        User user = new User(userCreateDTO.getUsername());
-//        user = this.usersRepository.save(user);
-
         return user;
     }
 

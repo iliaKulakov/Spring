@@ -70,5 +70,19 @@ public class AppUserControllerTest {
                 .andExpect(content().string(Matchers.containsString(userCreateDTO.getUsername())));
     }
 
+    @Test
+    public void testUserCreateServicemethod() throws Exception{
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        UserCreateDTO userCreateDTO = new UserCreateDTO(
+                "test_user_2"
+        );
+
+        when(usersRepository.save(any(User.class)))
+                .thenReturn(new User("test_user_1"));
+
+
+    }
 
 }
