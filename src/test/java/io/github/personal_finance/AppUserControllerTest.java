@@ -19,6 +19,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -33,10 +34,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-//@WebMvcTest(CommonUserService.class)
+@ContextConfiguration(classes = TestConfiguration.class)
 @WebMvcTest(UsersController.class)
-//@SpringBootTest(
-//        classes = TestConfiguration.class)
 public class AppUserControllerTest {
 
     @Autowired
@@ -44,12 +43,6 @@ public class AppUserControllerTest {
 
     @MockBean
     private UsersRepository usersRepository;
-
-    @MockBean
-    private UserService userService;
-
-    @MockBean
-    private CommonUserService commonUserService;
 
     @MockBean
     private ConnectionFactory connectionFactory;
@@ -60,56 +53,22 @@ public class AppUserControllerTest {
     @MockBean
     private ArrivalReceiver arrivalReceiver;
 
-//    @Test
-//    public void testAppUserOne() throws Exception {
-//
-//        ObjectMapper mapper = new ObjectMapper();
-//
-//        UserCreateDTO userCreateDTO = new UserCreateDTO(
-//                "test_user_1"
-//        );
-//
-//        when(usersRepository.save(any(User.class)))
-//                .thenReturn(new User("test_user_1"));
-//
-//        ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsString(userCreateDTO))
-//                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-//                .andDo(print())
-//                .andExpect(status().isOk())
-//                .andExpect(content().string(Matchers.containsString(userCreateDTO.getUsername())));
-//    }
-
-
-        @Test
+    @Test
     public void testAppUserOne() throws Exception {
 
-            ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
 
-            UserCreateDTO userCreateDTO = new UserCreateDTO(
-                    "test_user_1");
+        UserCreateDTO userCreateDTO = new UserCreateDTO(
+                "test_user_1"
+        );
 
-            System.out.println(userCreateDTO.getUsername());
+        when(usersRepository.save(any(User.class)))
+                .thenReturn(new User("test_user_1"));
 
-
-
-//            when(usersRepository.save(any(User.class)))
-//                    .thenReturn(new User("test_user_1"));
-
-//            User user = userService.createUser(userCreateDTO);
-//            System.out.println(user.getName());
-
-//            ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsBytes(user))
-//                            .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-//                    .andDo(print())
-//                .andExpect(status().isOk());
-
-
-//      ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsString(userCreateDTO))
-//                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-//                .andDo(print())
-//                .andExpect(status().isOk())
-//                .andExpect(content().string(Matchers.containsString(userCreateDTO.getUsername())));
-//    }
-
-        }
+        ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsString(userCreateDTO))
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(Matchers.containsString(userCreateDTO.getUsername())));
+    }
 }
