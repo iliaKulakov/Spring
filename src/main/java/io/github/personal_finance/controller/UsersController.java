@@ -61,7 +61,7 @@ public class UsersController {
     @ResponseBody
     @PostMapping
     public User createUser(@RequestBody UserCreateDTO userCreateDTO) {
-          User user = this.userService.createUser(userCreateDTO);
+        User user = this.userService.createUser(userCreateDTO);
         return user;
     }
 
