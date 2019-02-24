@@ -27,8 +27,7 @@ public class UsersController {
     @ResponseBody
     @GetMapping
     public List<User> getAllUsers() {
-        List<User> users = this.usersRepository.findAll();
-
+        List<User> users = this.userService.getAllUsersService();
         return users;
     }
 
@@ -55,7 +54,7 @@ public class UsersController {
     @ResponseBody
     @DeleteMapping(value = "/{id}")
     public void updateUserById(@PathVariable(value = "id") Long id) {
-        this.usersRepository.deleteById(id);
+        this.userService.deleteUser(id);
     }
 
     @ResponseBody

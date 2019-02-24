@@ -9,6 +9,8 @@ import io.github.personal_finance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommonUserService implements UserService {
 
@@ -24,13 +26,23 @@ public class CommonUserService implements UserService {
     }
 
     @Override
+    public List<User> getAllUsersService(){
+        List<User> users = this.usersRepository.findAll();
+
+        return users;
+    }
+
+
+    @Override
     public User createUser(UserCreateDTO userCreateDTO){
         User user = new User(userCreateDTO.getUsername());
         user = this.usersRepository.save(user);
         return user;
     }
 
-
-
+    @Override
+    public void deleteUser(Long id){
+        this.usersRepository.deleteById(id);
+    }
 
 }
