@@ -49,6 +49,9 @@ public class AppUserControllerTest {
     private UserService userService;
 
     @MockBean
+    private CommonUserService commonUserService;
+
+    @MockBean
     private ConnectionFactory connectionFactory;
 
     @MockBean
@@ -85,17 +88,20 @@ public class AppUserControllerTest {
             UserCreateDTO userCreateDTO = new UserCreateDTO(
                     "test_user_1");
 
+            System.out.println(userCreateDTO.getUsername());
+
 
 
 //            when(usersRepository.save(any(User.class)))
 //                    .thenReturn(new User("test_user_1"));
 
-            User user = userService.createUser(userCreateDTO);
+//            User user = userService.createUser(userCreateDTO);
+//            System.out.println(user.getName());
 
-            ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsBytes(user))
-                            .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                    .andDo(print())
-                .andExpect(status().isOk());
+//            ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsBytes(user))
+//                            .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+//                    .andDo(print())
+//                .andExpect(status().isOk());
 
 
 //      ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsString(userCreateDTO))
