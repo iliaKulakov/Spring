@@ -32,6 +32,11 @@ public class CommonUserService implements UserService {
         return users;
     }
 
+    @Override
+    public User getUserByIdService(Long id) {
+        User user = this.usersRepository.findUserById(id);
+        return user;
+    }
 
     @Override
     public User createUser(UserCreateDTO userCreateDTO){

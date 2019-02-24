@@ -34,8 +34,7 @@ public class UsersController {
     @ResponseBody
     @GetMapping(value = "/{id}")
     public User getUserById(@PathVariable(value = "id") Long id) {
-        User user = this.usersRepository.findUserById(id);
-
+        User user = this.userService.getUserByIdService(id);
         return user;
     }
 
