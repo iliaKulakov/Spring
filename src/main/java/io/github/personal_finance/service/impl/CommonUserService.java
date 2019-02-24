@@ -1,6 +1,7 @@
 package io.github.personal_finance.service.impl;
 
 import io.github.personal_finance.controller.dto.UserCreateDTO;
+import io.github.personal_finance.controller.dto.UserUpdateDTO;
 import io.github.personal_finance.domain.User;
 import io.github.personal_finance.repository.CategoryRepository;
 import io.github.personal_finance.repository.ExpenseRepository;
@@ -8,6 +9,8 @@ import io.github.personal_finance.repository.UsersRepository;
 import io.github.personal_finance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -49,5 +52,17 @@ public class CommonUserService implements UserService {
     public void deleteUser(Long id){
         this.usersRepository.deleteById(id);
     }
+
+    public User updateUserById(Long id, UserUpdateDTO userUpdateDTO) {
+        User user = this.usersRepository.findUserById(id);
+
+        user.setName(userUpdateDTO.getUsername());
+
+        user = this.usersRepository.save(user);
+
+        return user;
+    }
+
+
 
 }

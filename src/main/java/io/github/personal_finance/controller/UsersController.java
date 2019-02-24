@@ -41,11 +41,8 @@ public class UsersController {
     @ResponseBody
     @PutMapping(value = "/{id}")
     public User updateUserById(@PathVariable(value = "id") Long id, @RequestBody UserUpdateDTO userUpdateDTO) {
-        User user = this.usersRepository.findUserById(id);
 
-        user.setName(userUpdateDTO.getUsername());
-
-        user = this.usersRepository.save(user);
+        User user = userService.updateUserById(id,userUpdateDTO);
 
         return user;
     }
