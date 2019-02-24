@@ -7,6 +7,8 @@ import io.github.personal_finance.domain.User;
 import io.github.personal_finance.receiver.ArrivalReceiver;
 import io.github.personal_finance.receiver.ExpenseReceiver;
 import io.github.personal_finance.repository.UsersRepository;
+import io.github.personal_finance.service.UserService;
+import io.github.personal_finance.service.impl.CommonUserService;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -43,6 +45,9 @@ public class AppUserControllerTest {
     private UsersRepository usersRepository;
 
     @MockBean
+    private UserService userService;
+
+    @MockBean
     private ConnectionFactory connectionFactory;
 
     @MockBean
@@ -51,38 +56,46 @@ public class AppUserControllerTest {
     @MockBean
     private ArrivalReceiver arrivalReceiver;
 
-    @Test
-    public void testAppUserOne() throws Exception {
+//    @Test
+//    public void testAppUserOne() throws Exception {
+//
+//        ObjectMapper mapper = new ObjectMapper();
+//
+//        UserCreateDTO userCreateDTO = new UserCreateDTO(
+//                "test_user_1"
+//        );
+//
+//        when(usersRepository.save(any(User.class)))
+//                .thenReturn(new User("test_user_1"));
+//
+//        ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsString(userCreateDTO))
+//                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+//                .andDo(print())
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(Matchers.containsString(userCreateDTO.getUsername())));
+//    }
 
-        ObjectMapper mapper = new ObjectMapper();
-
-        UserCreateDTO userCreateDTO = new UserCreateDTO(
-                "test_user_1"
-        );
-
-        when(usersRepository.save(any(User.class)))
-                .thenReturn(new User("test_user_1"));
-
-        ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsString(userCreateDTO))
-                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(Matchers.containsString(userCreateDTO.getUsername())));
-    }
-
-    @Test
-    public void testUserCreateServicemethod() throws Exception{
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        UserCreateDTO userCreateDTO = new UserCreateDTO(
-                "test_user_2"
-        );
-
-        when(usersRepository.save(any(User.class)))
-                .thenReturn(new User("test_user_1"));
-
-
-    }
-
-}
+//    @Test
+//    public void testUserCreateServicemethod() throws Exception{
+//
+//        ObjectMapper mapper = new ObjectMapper();
+//
+//        UserCreateDTO userCreateDTO = new UserCreateDTO(
+//                "test_user_2"
+//        );
+//
+//
+//        UserService userService =  userService.createUser(userCreateDTO);
+//              //  = userService.createUser(userCreateDTO);
+//
+//        when(usersRepository.save(any(User.class)))
+//                .thenReturn(new User("test_user_2"));
+//
+//        ResultActions result = mvc.perform(post("/users").content(mapper.writeValueAsString(userService))
+//                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+//                .andDo(print())
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(Matchers.containsString(userCreateDTO.getUsername())));
+//    }
+//
+//}
