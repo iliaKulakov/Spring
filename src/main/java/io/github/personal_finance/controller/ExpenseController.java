@@ -21,7 +21,6 @@ public class ExpenseController {
     private ExpenseRepository expenseRepository;
     private CategoryRepository categoryRepository;
     private UsersRepository usersRepository;
-
     private ExpenseService expenseService;
 
     @Autowired

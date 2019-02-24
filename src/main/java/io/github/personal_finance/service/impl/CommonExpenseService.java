@@ -1,6 +1,7 @@
 package io.github.personal_finance.service.impl;
 
 import io.github.personal_finance.controller.dto.ExpenceCreateInfo;
+import io.github.personal_finance.controller.dto.UserCreateDTO;
 import io.github.personal_finance.domain.Category;
 import io.github.personal_finance.domain.Expense;
 import io.github.personal_finance.domain.User;
@@ -35,4 +36,6 @@ public class CommonExpenseService implements ExpenseService {
 
         return expense;
     }
+
+
 }

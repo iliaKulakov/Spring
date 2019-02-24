@@ -4,6 +4,7 @@ import io.github.personal_finance.controller.dto.UserCreateDTO;
 import io.github.personal_finance.controller.dto.UserUpdateDTO;
 import io.github.personal_finance.domain.User;
 import io.github.personal_finance.repository.UsersRepository;
+import io.github.personal_finance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +16,12 @@ import java.util.List;
 public class UsersController {
 
     private UsersRepository usersRepository;
+    private UserService userService;
 
     @Autowired
-    public UsersController(UsersRepository usersRepository) {
+    public UsersController(UsersRepository usersRepository, UserService userService) {
         this.usersRepository = usersRepository;
+        this.userService = userService;
     }
 
     @ResponseBody
@@ -58,10 +61,11 @@ public class UsersController {
     @ResponseBody
     @PostMapping
     public User createUser(@RequestBody UserCreateDTO userCreateDTO) {
-        User user = new User(userCreateDTO.getUsername());
-        user = this.usersRepository.save(user);
+          User user = this.userService.createUser(userCreateDTO);
+//        User user = new User(userCreateDTO.getUsername());
+//        user = this.usersRepository.save(user);
+
         return user;
     }
-
 
 }
