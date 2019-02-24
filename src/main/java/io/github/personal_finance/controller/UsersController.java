@@ -15,12 +15,10 @@ import java.util.List;
 @RequestMapping("/users")
 public class UsersController {
 
-    private UsersRepository usersRepository;
     private UserService userService;
 
     @Autowired
-    public UsersController(UsersRepository usersRepository, UserService userService) {
-        this.usersRepository = usersRepository;
+    public UsersController(UserService userService) {
         this.userService = userService;
     }
 
