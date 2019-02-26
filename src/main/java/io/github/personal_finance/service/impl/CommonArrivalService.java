@@ -10,6 +10,7 @@ import io.github.personal_finance.repository.ExpenseRepository;
 import io.github.personal_finance.repository.UsersRepository;
 import io.github.personal_finance.service.ArrivalService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -32,10 +33,17 @@ public class CommonArrivalService implements ArrivalService {
         return categories;
     }
 
-//    @Override
-//    public Arrival createArrivalService(ArrivalCreateInfo arrivalCreateInfo){
-//
-//    }
+    @Override
+    public Arrival createArrivalInfoService(ArrivalCreateInfo arrivalCreateInfo){
+
+        User user = this.usersRepository.findUserById(arrivalCreateInfo.getUserId());
+        Category category = this.categoryRepository.findCategoryById(arrivalCreateInfo.getCategoryId());
+        Arrival arrival = new Arrival(arrivalCreateInfo.getAmount(), user, category);
+
+        arrival = this.arrivalRepository.save(arrival);
+        return arrival;
+    }
+
     @Override
     public Arrival getArrivalByIdService(Long id){
         Arrival arrival = this.arrivalRepository.findArrivalByid(id);

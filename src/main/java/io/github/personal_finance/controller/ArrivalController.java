@@ -44,26 +44,15 @@ public class ArrivalController {
     @ResponseBody
     @PostMapping
     public Arrival createArrival(@RequestBody ArrivalCreateInfo arrivalCreateInfo) {
-
-        User user = this.usersRepository.findUserById(arrivalCreateInfo.getUserId());
-        Category category = this.categoryRepository.findCategoryById(arrivalCreateInfo.getCategoryId());
-        Arrival arrival = new Arrival(arrivalCreateInfo.getAmount(), user, category);
-
-        arrival = this.arrivalRepository.save(arrival);
+        Arrival arrival = this.arrivalService.createArrivalInfoService(arrivalCreateInfo);
         return arrival;
-
-//        User user = this.arrivalService.createArrivalService(arrivalCreateInfo);
-//        return arrival;
-
     }
 
     @ResponseBody
     @DeleteMapping(value = "/{id}")
     public void updateArrivalInformationInTable(@PathVariable(value = "id") Long id) {
-//        this.arrivalRepository.deleteById(id);
         this.arrivalService.deleteArrivalInformationInTableService(id);
     }
-
 
     @ResponseBody
     @PutMapping(value = "/{id}")
@@ -76,7 +65,6 @@ public class ArrivalController {
         arrival = this.arrivalRepository.save(arrival);
         return arrival;
     }
-
 
     @ResponseBody
     @GetMapping(value = "/{id}")

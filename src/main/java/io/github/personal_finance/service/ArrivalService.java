@@ -11,7 +11,7 @@ public interface ArrivalService {
 
     List<Arrival> getAllArrivalsService();
 
-//    Arrival createArrivalService(ArrivalCreateInfo arrivalCreateInfo);
+   Arrival createArrivalInfoService(ArrivalCreateInfo arrivalCreateInfo);
 //
     void deleteArrivalInformationInTableService(Long id);
 //
