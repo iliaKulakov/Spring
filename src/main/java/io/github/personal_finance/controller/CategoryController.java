@@ -29,15 +29,12 @@ public class CategoryController {
 
     }
 
-
-
     @ResponseBody
     @GetMapping(value = "/{id}")
     public Category getCategoryById(@PathVariable(value = "id") Long id) {
         Category category = this.categoryService.getCategoryByIdService(id);
         return category;
     }
-
 
     @ResponseBody
     @PostMapping
@@ -46,7 +43,6 @@ public class CategoryController {
         return category;
 
     }
-
 
     @ResponseBody
     @PutMapping(value = "/{id}")
@@ -61,5 +57,4 @@ public class CategoryController {
     {
         categoryService.updateCategoryByIdService(id);
     }
-
 }

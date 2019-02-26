@@ -9,6 +9,7 @@ import io.github.personal_finance.repository.ArrivalRepository;
 import io.github.personal_finance.repository.CategoryRepository;
 import io.github.personal_finance.repository.ExpenseRepository;
 import io.github.personal_finance.repository.UsersRepository;
+import io.github.personal_finance.service.ArrivalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,20 +23,25 @@ public class ArrivalController {
     private ArrivalRepository arrivalRepository;
     private CategoryRepository categoryRepository;
     private UsersRepository usersRepository;
+    private ArrivalService arrivalService;
 
     @Autowired
-    public ArrivalController(ExpenseRepository expenseRepository, ArrivalRepository arrivalRepository, CategoryRepository categoryRepository, UsersRepository usersRepository) {
+    public ArrivalController(ExpenseRepository expenseRepository, ArrivalRepository arrivalRepository, CategoryRepository categoryRepository, UsersRepository usersRepository, ArrivalService arrivalService) {
         this.expenseRepository = expenseRepository;
         this.arrivalRepository = arrivalRepository;
         this.categoryRepository = categoryRepository;
         this.usersRepository = usersRepository;
+        this.arrivalService = arrivalService;
     }
 
     @ResponseBody
     @GetMapping
     public List<Arrival> getAllArrivals() {
-        List<Arrival> categories = this.arrivalRepository.findAll();
+//        List<Arrival> categories = this.arrivalRepository.findAll();
+//
+//        return categories;
 
+        List<Arrival> categories = this.arrivalService.getAllArrivalsService();
         return categories;
     }
 
@@ -49,6 +55,9 @@ public class ArrivalController {
 
         arrival = this.arrivalRepository.save(arrival);
         return arrival;
+
+//        User user = this.arrivalService.createArrivalService(arrivalCreateInfo);
+//        return arrival;
 
     }
 
@@ -75,8 +84,11 @@ public class ArrivalController {
     @ResponseBody
     @GetMapping(value = "/{id}")
     public Arrival getArrivalById(@PathVariable(value = "id") Long id) {
-        Arrival arrival = this.arrivalRepository.findArrivalByid(id);
+//        Arrival arrival = this.arrivalRepository.findArrivalByid(id);
+//
+//        return arrival;
 
+        Arrival arrival = this.arrivalService.getArrivalByIdService(id);
         return arrival;
     }
 
