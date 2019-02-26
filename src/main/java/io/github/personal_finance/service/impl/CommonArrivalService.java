@@ -1,6 +1,7 @@
 package io.github.personal_finance.service.impl;
 
 import io.github.personal_finance.controller.dto.ArrivalCreateInfo;
+import io.github.personal_finance.controller.dto.ArrivalUpdateInfo;
 import io.github.personal_finance.domain.Arrival;
 import io.github.personal_finance.domain.Category;
 import io.github.personal_finance.domain.User;
@@ -10,6 +11,7 @@ import io.github.personal_finance.repository.ExpenseRepository;
 import io.github.personal_finance.repository.UsersRepository;
 import io.github.personal_finance.service.ArrivalService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -55,5 +57,16 @@ public class CommonArrivalService implements ArrivalService {
     public void deleteArrivalInformationInTableService(Long id){
         this.arrivalRepository.deleteById(id);
     }
+
+    @Override
+     public Arrival updateArrivalInformationInTableService( Long id, ArrivalUpdateInfo arrivalUpdateInfo){
+         Category category = this.categoryRepository.findCategoryById(arrivalUpdateInfo.getCategoryId());
+         Arrival arrival = this.arrivalRepository.findArrivalByid(id);
+
+         arrival.setCategory(category);
+         arrival.setAmount(arrivalUpdateInfo.getAmount());
+         arrival = this.arrivalRepository.save(arrival);
+         return arrival;
+     }
 
 }

@@ -57,12 +57,7 @@ public class ArrivalController {
     @ResponseBody
     @PutMapping(value = "/{id}")
     public Arrival updateArrivalInformationInTable(@PathVariable(value = "id") Long id, @RequestBody ArrivalUpdateInfo arrivalUpdateInfo) {
-        Category category = this.categoryRepository.findCategoryById(arrivalUpdateInfo.getCategoryId());
-        Arrival arrival = this.arrivalRepository.findArrivalByid(id);
-
-        arrival.setCategory(category);
-        arrival.setAmount(arrivalUpdateInfo.getAmount());
-        arrival = this.arrivalRepository.save(arrival);
+        Arrival arrival = this.arrivalService.updateArrivalInformationInTableService(id,arrivalUpdateInfo);
         return arrival;
     }
 
