@@ -13,7 +13,7 @@ public interface ArrivalService {
 
 //    Arrival createArrivalService(ArrivalCreateInfo arrivalCreateInfo);
 //
-//    void updateArrivalInformationInTableService(Long id);
+    void deleteArrivalInformationInTableService(Long id);
 //
 //    Arrival updateArrivalInformationInTableService();
 //

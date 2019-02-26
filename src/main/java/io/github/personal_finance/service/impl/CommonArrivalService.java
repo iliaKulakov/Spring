@@ -36,11 +36,16 @@ public class CommonArrivalService implements ArrivalService {
 //    public Arrival createArrivalService(ArrivalCreateInfo arrivalCreateInfo){
 //
 //    }
-
+    @Override
     public Arrival getArrivalByIdService(Long id){
         Arrival arrival = this.arrivalRepository.findArrivalByid(id);
 
         return arrival;
+    }
+
+    @Override
+    public void deleteArrivalInformationInTableService(Long id){
+        this.arrivalRepository.deleteById(id);
     }
 
 }

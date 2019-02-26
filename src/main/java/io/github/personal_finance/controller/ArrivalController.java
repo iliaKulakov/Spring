@@ -37,10 +37,6 @@ public class ArrivalController {
     @ResponseBody
     @GetMapping
     public List<Arrival> getAllArrivals() {
-//        List<Arrival> categories = this.arrivalRepository.findAll();
-//
-//        return categories;
-
         List<Arrival> categories = this.arrivalService.getAllArrivalsService();
         return categories;
     }
@@ -64,7 +60,8 @@ public class ArrivalController {
     @ResponseBody
     @DeleteMapping(value = "/{id}")
     public void updateArrivalInformationInTable(@PathVariable(value = "id") Long id) {
-        this.arrivalRepository.deleteById(id);
+//        this.arrivalRepository.deleteById(id);
+        this.arrivalService.deleteArrivalInformationInTableService(id);
     }
 
 
@@ -84,10 +81,6 @@ public class ArrivalController {
     @ResponseBody
     @GetMapping(value = "/{id}")
     public Arrival getArrivalById(@PathVariable(value = "id") Long id) {
-//        Arrival arrival = this.arrivalRepository.findArrivalByid(id);
-//
-//        return arrival;
-
         Arrival arrival = this.arrivalService.getArrivalByIdService(id);
         return arrival;
     }
