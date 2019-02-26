@@ -55,28 +55,38 @@ public class CategoryController {
     @ResponseBody
     @PostMapping
     public Category createCategory(@RequestBody CategoryCreateInfo categoryCreateInfo) {
-        Category category = new Category(categoryCreateInfo.getName());
-        category = this.categoryRepository.save(category);
+//        Category category = new Category(categoryCreateInfo.getName());
+//        category = this.categoryRepository.save(category);
+//        return category;
+
+        Category category = categoryService.createCategoryService(categoryCreateInfo);
         return category;
+
     }
 
 
     @ResponseBody
     @PutMapping(value = "/{id}")
     public Category updateCategoryById(@PathVariable(value = "id") Long id, @RequestBody CategoryUpdateInfo categoryUpdateInfo) {
-        Category categoryByid = this.categoryRepository.findCategoryById(id);
+//        Category categoryByid = this.categoryRepository.findCategoryById(id);
+//
+//        categoryByid.setName(categoryUpdateInfo.getName());
+//
+//        categoryByid = this.categoryRepository.save(categoryByid);
+//
+//        return categoryByid;
 
-        categoryByid.setName(categoryUpdateInfo.getName());
-
-        categoryByid = this.categoryRepository.save(categoryByid);
-
+        Category categoryByid = categoryService.updateCategoryByIdService(id,categoryUpdateInfo);
         return categoryByid;
     }
 
     @ResponseBody
     @DeleteMapping(value = "/{id}")
-    public void updateCategoryById(@PathVariable(value = "id") Long id) {
-        this.categoryRepository.deleteById(id);
+    public void updateCategoryById(@PathVariable(value = "id") Long id)
+    {
+
+//        this.categoryRepository.deleteById(id);
+        categoryService.updateCategoryByIdService(id);
     }
 
 }
