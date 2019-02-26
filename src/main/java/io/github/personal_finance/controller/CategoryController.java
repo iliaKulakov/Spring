@@ -15,22 +15,15 @@ import java.util.List;
 public class CategoryController {
 
     private CategoryService categoryService;
-    private CategoryRepository categoryRepository;
 
     @Autowired
-    public CategoryController(CategoryService categoryService, CategoryRepository categoryRepository) {
+    public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
-        this.categoryRepository = categoryRepository;
     }
-
-
-
 
     @ResponseBody
     @GetMapping
     public List<Category> getAllCategory() {
-//        List<Category> categories = this.categoryRepository.findAll();
-//        return categories;
         List<Category> categories = categoryService.getAllCategoryService();
         return categories;
 
@@ -41,13 +34,7 @@ public class CategoryController {
     @ResponseBody
     @GetMapping(value = "/{id}")
     public Category getCategoryById(@PathVariable(value = "id") Long id) {
-//        Category category = this.categoryRepository.findCategoryById(id);
-//
-//        return category;
-
-
         Category category = this.categoryService.getCategoryByIdService(id);
-
         return category;
     }
 
@@ -55,10 +42,6 @@ public class CategoryController {
     @ResponseBody
     @PostMapping
     public Category createCategory(@RequestBody CategoryCreateInfo categoryCreateInfo) {
-//        Category category = new Category(categoryCreateInfo.getName());
-//        category = this.categoryRepository.save(category);
-//        return category;
-
         Category category = categoryService.createCategoryService(categoryCreateInfo);
         return category;
 
@@ -68,14 +51,6 @@ public class CategoryController {
     @ResponseBody
     @PutMapping(value = "/{id}")
     public Category updateCategoryById(@PathVariable(value = "id") Long id, @RequestBody CategoryUpdateInfo categoryUpdateInfo) {
-//        Category categoryByid = this.categoryRepository.findCategoryById(id);
-//
-//        categoryByid.setName(categoryUpdateInfo.getName());
-//
-//        categoryByid = this.categoryRepository.save(categoryByid);
-//
-//        return categoryByid;
-
         Category categoryByid = categoryService.updateCategoryByIdService(id,categoryUpdateInfo);
         return categoryByid;
     }
@@ -84,8 +59,6 @@ public class CategoryController {
     @DeleteMapping(value = "/{id}")
     public void updateCategoryById(@PathVariable(value = "id") Long id)
     {
-
-//        this.categoryRepository.deleteById(id);
         categoryService.updateCategoryByIdService(id);
     }
 
