@@ -18,24 +18,18 @@ import java.util.List;
 @RequestMapping("/expense")
 public class ExpenseController {
 
-    private ExpenseRepository expenseRepository;
-    private CategoryRepository categoryRepository;
-    private UsersRepository usersRepository;
     private ExpenseService expenseService;
 
     @Autowired
-    public ExpenseController(ExpenseRepository expenseRepository, CategoryRepository categoryRepository, UsersRepository usersRepository, ExpenseService expenseService) {
-        this.expenseRepository = expenseRepository;
-        this.categoryRepository = categoryRepository;
-        this.usersRepository = usersRepository;
-
+    public ExpenseController(ExpenseService expenseService) {
         this.expenseService = expenseService;
     }
 
     @ResponseBody
     @GetMapping
     public List<Expense> getAllExpenses() {
-        List<Expense> categories = this.expenseRepository.findAll();
+
+        List<Expense> categories = this.expenseService.getAllExpensesService();
 
         return categories;
     }
@@ -51,28 +45,23 @@ public class ExpenseController {
     @ResponseBody
     @DeleteMapping(value = "/{id}")
     public void updateExpenseTableById(@PathVariable(value = "id") Long id) {
-        this.expenseRepository.deleteById(id);
+
+        this.expenseService.deleteExpenseTableById(id);
     }
 
     @ResponseBody
     @PutMapping(value = "/{id}")
     public Expense updateExpenseTableById(@PathVariable(value = "id") Long id, @RequestBody ExpenceUpdateInfo expenceUpdateInfo) {
 
-        Category category = this.categoryRepository.findCategoryById(expenceUpdateInfo.getCategoryId());
-        Expense expense = this.expenseRepository.findExpenceByid(id);
-
-        expense.setCategory(category);
-        expense.setAmount(expenceUpdateInfo.getAmount());
-
-        expense = this.expenseRepository.save(expense);
-
+        Expense expense = this.expenseService.updateExpenseTableById(id,expenceUpdateInfo);
         return expense;
     }
 
     @ResponseBody
     @GetMapping(value = "/{id}")
     public Expense getExpenseById(@PathVariable(value = "id") Long id) {
-        Expense expense = this.expenseRepository.findExpenceByid(id);
+
+        Expense expense = this.expenseService.getExpenseByIdService(id);
         return expense;
     }
 
