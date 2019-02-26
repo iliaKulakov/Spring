@@ -71,4 +71,10 @@ public class AppUserControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(Matchers.containsString(userCreateDTO.getUsername())));
     }
+
+    @Test
+    public void testPostUser(){
+
+    }
+    
 }

@@ -4,6 +4,7 @@ import io.github.personal_finance.controller.dto.CategoryCreateInfo;
 import io.github.personal_finance.controller.dto.CategoryUpdateInfo;
 import io.github.personal_finance.domain.Category;
 import io.github.personal_finance.repository.CategoryRepository;
+import io.github.personal_finance.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,25 +14,39 @@ import java.util.List;
 @RequestMapping("/categories")
 public class CategoryController {
 
+    private CategoryService categoryService;
     private CategoryRepository categoryRepository;
 
     @Autowired
-    public CategoryController(CategoryRepository categoryRepository) {
+    public CategoryController(CategoryService categoryService, CategoryRepository categoryRepository) {
+        this.categoryService = categoryService;
         this.categoryRepository = categoryRepository;
     }
+
+
+
 
     @ResponseBody
     @GetMapping
     public List<Category> getAllCategory() {
-        List<Category> categories = this.categoryRepository.findAll();
-
+//        List<Category> categories = this.categoryRepository.findAll();
+//        return categories;
+        List<Category> categories = categoryService.getAllCategoryService();
         return categories;
+
     }
+
+
 
     @ResponseBody
     @GetMapping(value = "/{id}")
     public Category getCategoryById(@PathVariable(value = "id") Long id) {
-        Category category = this.categoryRepository.findCategoryById(id);
+//        Category category = this.categoryRepository.findCategoryById(id);
+//
+//        return category;
+
+
+        Category category = this.categoryService.getCategoryByIdService(id);
 
         return category;
     }
