@@ -19,18 +19,10 @@ import java.util.List;
 @RequestMapping("/arrival")
 public class ArrivalController {
 
-    private ExpenseRepository expenseRepository;
-    private ArrivalRepository arrivalRepository;
-    private CategoryRepository categoryRepository;
-    private UsersRepository usersRepository;
     private ArrivalService arrivalService;
 
     @Autowired
-    public ArrivalController(ExpenseRepository expenseRepository, ArrivalRepository arrivalRepository, CategoryRepository categoryRepository, UsersRepository usersRepository, ArrivalService arrivalService) {
-        this.expenseRepository = expenseRepository;
-        this.arrivalRepository = arrivalRepository;
-        this.categoryRepository = categoryRepository;
-        this.usersRepository = usersRepository;
+    public ArrivalController(ArrivalService arrivalService) {
         this.arrivalService = arrivalService;
     }
 
