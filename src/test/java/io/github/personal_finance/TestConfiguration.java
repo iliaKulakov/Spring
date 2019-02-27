@@ -11,7 +11,6 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import static org.mockito.Mockito.mock;
 

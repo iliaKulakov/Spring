@@ -2,12 +2,7 @@ package io.github.personal_finance.receiver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.personal_finance.controller.dto.ExpenceCreateInfo;
-import io.github.personal_finance.domain.Category;
 import io.github.personal_finance.domain.Expense;
-import io.github.personal_finance.domain.User;
-import io.github.personal_finance.repository.CategoryRepository;
-import io.github.personal_finance.repository.ExpenseRepository;
-import io.github.personal_finance.repository.UsersRepository;
 import io.github.personal_finance.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

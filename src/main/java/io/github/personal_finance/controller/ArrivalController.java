@@ -3,12 +3,6 @@ package io.github.personal_finance.controller;
 import io.github.personal_finance.controller.dto.ArrivalCreateInfo;
 import io.github.personal_finance.controller.dto.ArrivalUpdateInfo;
 import io.github.personal_finance.domain.Arrival;
-import io.github.personal_finance.domain.Category;
-import io.github.personal_finance.domain.User;
-import io.github.personal_finance.repository.ArrivalRepository;
-import io.github.personal_finance.repository.CategoryRepository;
-import io.github.personal_finance.repository.ExpenseRepository;
-import io.github.personal_finance.repository.UsersRepository;
 import io.github.personal_finance.service.ArrivalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +43,7 @@ public class ArrivalController {
     @ResponseBody
     @PutMapping(value = "/{id}")
     public Arrival updateArrivalInformationInTable(@PathVariable(value = "id") Long id, @RequestBody ArrivalUpdateInfo arrivalUpdateInfo) {
-        Arrival arrival = this.arrivalService.updateArrivalInformationInTableService(id,arrivalUpdateInfo);
+        Arrival arrival = this.arrivalService.updateArrivalInformationInTableService(id, arrivalUpdateInfo);
         return arrival;
     }
 

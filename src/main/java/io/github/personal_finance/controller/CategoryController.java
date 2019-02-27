@@ -3,7 +3,6 @@ package io.github.personal_finance.controller;
 import io.github.personal_finance.controller.dto.CategoryCreateInfo;
 import io.github.personal_finance.controller.dto.CategoryUpdateInfo;
 import io.github.personal_finance.domain.Category;
-import io.github.personal_finance.repository.CategoryRepository;
 import io.github.personal_finance.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,14 +46,13 @@ public class CategoryController {
     @ResponseBody
     @PutMapping(value = "/{id}")
     public Category updateCategoryById(@PathVariable(value = "id") Long id, @RequestBody CategoryUpdateInfo categoryUpdateInfo) {
-        Category categoryByid = categoryService.updateCategoryByIdService(id,categoryUpdateInfo);
+        Category categoryByid = categoryService.updateCategoryByIdService(id, categoryUpdateInfo);
         return categoryByid;
     }
 
     @ResponseBody
     @DeleteMapping(value = "/{id}")
-    public void updateCategoryById(@PathVariable(value = "id") Long id)
-    {
+    public void updateCategoryById(@PathVariable(value = "id") Long id) {
         categoryService.updateCategoryByIdService(id);
     }
 }

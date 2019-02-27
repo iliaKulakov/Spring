@@ -7,8 +7,6 @@ import io.github.personal_finance.repository.CategoryRepository;
 import io.github.personal_finance.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -24,8 +22,8 @@ public class CommonCategoryService implements CategoryService {
     }
 
     @Override
-    public List<Category> getAllCategoryService(){
-    List<Category> categories = this.categoryRepository.findAll();
+    public List<Category> getAllCategoryService() {
+        List<Category> categories = this.categoryRepository.findAll();
         return categories;
     }
 
@@ -33,7 +31,8 @@ public class CommonCategoryService implements CategoryService {
     public Category getCategoryByIdService(Long id) {
         Category category = this.categoryRepository.findCategoryById(id);
 
-        return category;}
+        return category;
+    }
 
     @Override
     public Category createCategoryService(CategoryCreateInfo categoryCreateInfo) {

@@ -3,7 +3,6 @@ package io.github.personal_finance.service;
 import io.github.personal_finance.controller.dto.CategoryCreateInfo;
 import io.github.personal_finance.controller.dto.CategoryUpdateInfo;
 import io.github.personal_finance.domain.Category;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

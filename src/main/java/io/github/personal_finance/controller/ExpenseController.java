@@ -2,12 +2,7 @@ package io.github.personal_finance.controller;
 
 import io.github.personal_finance.controller.dto.ExpenceCreateInfo;
 import io.github.personal_finance.controller.dto.ExpenceUpdateInfo;
-import io.github.personal_finance.domain.Category;
 import io.github.personal_finance.domain.Expense;
-import io.github.personal_finance.domain.User;
-import io.github.personal_finance.repository.CategoryRepository;
-import io.github.personal_finance.repository.ExpenseRepository;
-import io.github.personal_finance.repository.UsersRepository;
 import io.github.personal_finance.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +48,7 @@ public class ExpenseController {
     @PutMapping(value = "/{id}")
     public Expense updateExpenseTableById(@PathVariable(value = "id") Long id, @RequestBody ExpenceUpdateInfo expenceUpdateInfo) {
 
-        Expense expense = this.expenseService.updateExpenseTableById(id,expenceUpdateInfo);
+        Expense expense = this.expenseService.updateExpenseTableById(id, expenceUpdateInfo);
         return expense;
     }
 

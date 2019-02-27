@@ -9,8 +9,6 @@ import io.github.personal_finance.repository.UsersRepository;
 import io.github.personal_finance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -29,7 +27,7 @@ public class CommonUserService implements UserService {
     }
 
     @Override
-    public List<User> getAllUsersService(){
+    public List<User> getAllUsersService() {
         List<User> users = this.usersRepository.findAll();
 
         return users;
@@ -42,14 +40,14 @@ public class CommonUserService implements UserService {
     }
 
     @Override
-    public User createUser(UserCreateDTO userCreateDTO){
+    public User createUser(UserCreateDTO userCreateDTO) {
         User user = new User(userCreateDTO.getUsername());
         user = this.usersRepository.save(user);
         return user;
     }
 
     @Override
-    public void deleteUser(Long id){
+    public void deleteUser(Long id) {
         this.usersRepository.deleteById(id);
     }
 
@@ -62,7 +60,6 @@ public class CommonUserService implements UserService {
 
         return user;
     }
-
 
 
 }
