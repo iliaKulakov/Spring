@@ -26,7 +26,6 @@ ext {
     hibernateV = "5.4.0.Final"
     jacksonV = "2.9.8"
     guavaV = "23.0"
-    ext['spring-security.version']='5.2.0.BUILD-SNAPSHOT'
 }
 
 dependencies {
@@ -48,8 +47,6 @@ dependencies {
     testCompile('com.github.fridujo:rabbitmq-mock:1.0.9')
     testImplementation "junit:junit:4.12"
     runtime("org.postgresql:postgresql")
-    compile "org.springframework.boot:spring-boot-starter-security"
-
 }
 
 
