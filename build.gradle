@@ -2,6 +2,7 @@
 plugins {
     id "java"
     id "application"
+    id 'checkstyle'
     id "org.springframework.boot" version "2.1.0.RELEASE"
     id "io.spring.dependency-management" version "1.0.6.RELEASE"
 }
@@ -25,6 +26,7 @@ ext {
     hibernateV = "5.4.0.Final"
     jacksonV = "2.9.8"
     guavaV = "23.0"
+    ext['spring-security.version']='5.2.0.BUILD-SNAPSHOT'
 }
 
 dependencies {
@@ -42,13 +44,16 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testCompile group: 'com.h2database', name: 'h2', version: '1.0.60'
+    testCompile('com.github.fridujo:rabbitmq-mock:1.0.9')
     testImplementation "junit:junit:4.12"
     runtime("org.postgresql:postgresql")
-    
+    compile "org.springframework.boot:spring-boot-starter-security"
+
 }
 
 
 
 wrapper {
-    gradleVersion = "5.1.1" // Желаемая версия
+    gradleVersion = "5.2.1" // Желаемая версия
 }
