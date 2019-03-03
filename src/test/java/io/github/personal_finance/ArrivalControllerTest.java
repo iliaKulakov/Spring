@@ -31,17 +31,17 @@ public class ArrivalControllerTest {
 //    arrival.setUser(user);
 //    categories.add(arrival);
 //    }
-
-    @Test
-    public void testGetMapping() {
-        ArrivalRepository arrivalRepository = mock(ArrivalRepository.class);
-        when(arrivalRepository.findAll())
-                .thenReturn(categories);
-
-        //ArrivalController arrivalController = new ArrivalController();
-        // ExtendedМodelMap uiModel = new ExtendedМodelMap();
-
-    }
+//
+//    @Test
+//    public void testGetMapping() {
+//        ArrivalRepository arrivalRepository = mock(ArrivalRepository.class);
+//        when(arrivalRepository.findAll())
+//                .thenReturn(categories);
+//
+//        //ArrivalController arrivalController = new ArrivalController();
+//        // ExtendedМodelMap uiModel = new ExtendedМodelMap();
+//
+//    }
 
 }
 
