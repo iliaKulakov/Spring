@@ -13,7 +13,7 @@ public class MainController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/hello")
+    @RequestMapping("hello")
     public Hello hello(@RequestParam(value="name", defaultValue="World") String name) {
         return
                 new Hello(counter.incrementAndGet(),
