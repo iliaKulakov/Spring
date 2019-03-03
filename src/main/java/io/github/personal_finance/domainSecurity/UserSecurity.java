@@ -22,49 +22,49 @@ public class UserSecurity implements UserDetails {
     private boolean credentialsNonExpired;
     private boolean enabled;
 
-    //i don't know but lombok does not work correctly and i overrided methods manually
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired(){
-        return credentialsNonExpired;
-    }
-
-    @Override
-    public boolean isAccountNonLocked(){
-        return accountNonLocked;
-    }
-
-    @Override
-    public boolean isAccountNonExpired(){
-        return accountNonExpired;
-    }
-
-    @Override
-    public String getUsername(){
-        return username;
-    }
-
-    @Override
-    public String getPassword(){
-        return password;
-    }
-
-    @Override
-    public List<Role> getAuthorities(){
-        return authorities;
-    }
-
-    public UserSecurity(List<Role> authorities, String password, String username, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
-        this.authorities = authorities;
-        this.password = password;
-        this.username = username;
-        this.accountNonExpired = accountNonExpired;
-        this.accountNonLocked = accountNonLocked;
-        this.credentialsNonExpired = credentialsNonExpired;
-        this.enabled = enabled;
-    }
+//    //i don't know but lombok does not work correctly and i overrided methods manually
+//    @Override
+//    public boolean isEnabled() {
+//        return enabled;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired(){
+//        return credentialsNonExpired;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked(){
+//        return accountNonLocked;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired(){
+//        return accountNonExpired;
+//    }
+//
+//    @Override
+//    public String getUsername(){
+//        return username;
+//    }
+//
+//    @Override
+//    public String getPassword(){
+//        return password;
+//    }
+//
+//    @Override
+//    public List<Role> getAuthorities(){
+//        return authorities;
+//    }
+//
+//    public UserSecurity(List<Role> authorities, String password, String username, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
+//        this.authorities = authorities;
+//        this.password = password;
+//        this.username = username;
+//        this.accountNonExpired = accountNonExpired;
+//        this.accountNonLocked = accountNonLocked;
+//        this.credentialsNonExpired = credentialsNonExpired;
+//        this.enabled = enabled;
+//    }
 }
