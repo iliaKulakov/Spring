@@ -1,5 +1,8 @@
 package io.github.personal_finance.config;
 
+import io.github.personal_finance.security.SecurityUserService;
+import io.github.personal_finance.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,6 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll();
     }
 
+
+    @Autowired
+    private SecurityUserService securityUserService;
+
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
@@ -40,4 +47,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         return new InMemoryUserDetailsManager(user);
     }
+
+
 }
