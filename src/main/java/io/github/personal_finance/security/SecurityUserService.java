@@ -16,7 +16,7 @@ public class SecurityUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return UserSecurity.builder()
                 .username(username)
-                .password("password")
+                .password("{noop}password") //really strange things but working
                 .authorities(ImmutableList.of(Role.USER))
                 .accountNonExpired(true)
                 .accountNonLocked(true)
