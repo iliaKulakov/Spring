@@ -12,11 +12,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
 
 @Service
-public class SecurityUserService implements UserDetailsService {
+public class SecurityUserService implements UserDetailsService
+{
 
     @Autowired
     private UserDao userDao;
@@ -28,15 +28,22 @@ public class SecurityUserService implements UserDetailsService {
             userDao.save(UserSecurity.builder()
                     .username("user")
                     .password("password")
+                    .enabled(true)
+                    .credentialsNonExpired(true)
+                    .accountNonExpired(true)
+                    .accountNonLocked(true)
+                    .authorities("USER")
                     .build());
         }
     }
 
-    @Override
-    public UserDetails loadUserByUsername(@NonNull String username) throws UsernameNotFoundException {
-       // UserDetails userDetails =  userDao.findByUsername(username);
+   @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+       UserDetails userDetails =  userDao.findByUsername(username);
+       return userDetails;
 
-      return null;
+//      UserSecurity userSecurity = userDao.findByUsername(username);
+//      return userSecurity;
 
 //        return UserSecurity.builder()
 //                .username(username)
