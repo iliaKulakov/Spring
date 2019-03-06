@@ -15,8 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 
 @Service
-public class SecurityUserService implements UserDetailsService
-{
+public class SecurityUserService implements UserDetailsService {
 
     @Autowired
     private UserDao userDao;
@@ -27,7 +26,7 @@ public class SecurityUserService implements UserDetailsService
 
             userDao.save(UserSecurity.builder()
                     .username("user")
-                    .password("password")
+                    .password("{noop}password")
                     .enabled(true)
                     .credentialsNonExpired(true)
                     .accountNonExpired(true)
