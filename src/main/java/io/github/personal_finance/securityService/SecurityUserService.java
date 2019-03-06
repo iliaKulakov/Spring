@@ -19,22 +19,6 @@ public class SecurityUserService implements UserDetailsService {
     @Autowired
     private UserDao userDao;
 
-//    @PostConstruct //create user with simple password
-//    public void init(){
-//        if(userDao.findByUsername("user")==null) {
-//
-//            userDao.save(UserSecurity.builder()
-//                    .username("user")
-//                    .password("      password")
-//                    .enabled(true)
-//                    .credentialsNonExpired(true)
-//                    .accountNonExpired(true)
-//                    .accountNonLocked(true)
-//                    .authorities("USER")
-//                    .build());
-//        }
-//    }
-
     @PostConstruct //create user with Bcrypt
     public void init(){
 
