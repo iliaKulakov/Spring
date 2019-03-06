@@ -1,15 +1,9 @@
-package io.github.personal_finance.persistenceSecurity;
+package io.github.personal_finance.domainSecurity;
 
-import io.github.personal_finance.domainSecurity.UserSecurity;
+import io.github.personal_finance.domainSecurity.dtoSecurity.UserSecurity;
 import io.github.personal_finance.repositorySecurity.UserSecurityRepository;
-import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.HibernateTemplate;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import java.util.Optional;
 
 @Component
 public class UserDao {

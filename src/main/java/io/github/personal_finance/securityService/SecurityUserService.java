@@ -1,12 +1,7 @@
-package io.github.personal_finance.security;
+package io.github.personal_finance.securityService;
 
-import com.google.common.collect.ImmutableList;
-import io.github.personal_finance.domainSecurity.Role;
-import io.github.personal_finance.domainSecurity.UserSecurity;
-import io.github.personal_finance.persistenceSecurity.UserDao;
-import io.github.personal_finance.repositorySecurity.UserSecurityRepository;
-import io.github.personal_finance.service.UserService;
-import lombok.NonNull;
+import io.github.personal_finance.domainSecurity.dtoSecurity.UserSecurity;
+import io.github.personal_finance.domainSecurity.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

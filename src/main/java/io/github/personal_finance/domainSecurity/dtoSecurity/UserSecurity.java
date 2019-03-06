@@ -1,5 +1,6 @@
-package io.github.personal_finance.domainSecurity;
+package io.github.personal_finance.domainSecurity.dtoSecurity;
 
+import io.github.personal_finance.domainSecurity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -46,31 +47,26 @@ public class UserSecurity implements UserDetails
     @Column(name = "enabled", columnDefinition = "BIT", length = 1)
     private boolean enabled;
 
-//    //i don't know but lombok does not work correctly and i overrided methods manually
     @Override
     public boolean isEnabled() {
-//        boolean enabled;
         return enabled;
     }
 
     @Override
     public boolean isCredentialsNonExpired(){
-//        boolean credentialsNonExpired;
         return credentialsNonExpired;
     }
-//
+
     @Override
     public boolean isAccountNonLocked(){
-//        boolean accountNonLocked;
         return accountNonLocked;
     }
-//
+
     @Override
     public boolean isAccountNonExpired(){
-//        boolean accountNonExpired;
         return accountNonExpired;
     }
-//
+
     @Override
     public String getUsername(){
         return username;
@@ -80,20 +76,11 @@ public class UserSecurity implements UserDetails
     public String getPassword(){
         return password;
     }
-//
+
     @Override
     public List<Role> getAuthorities(){
         List<Role> authorities = Arrays.asList(USER);
         return authorities;
     }
-////
-//    public UserSecurity(List<Role> authorities, String password, String username, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
-//        this.authorities = authorities;
-//        this.password = password;
-//        this.username = username;
-//        this.accountNonExpired = accountNonExpired;
-//        this.accountNonLocked = accountNonLocked;
-//        this.credentialsNonExpired = credentialsNonExpired;
-//        this.enabled = enabled;
-//    }
+
 }
