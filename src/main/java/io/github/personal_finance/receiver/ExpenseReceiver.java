@@ -21,7 +21,6 @@ public class ExpenseReceiver {
         this.expenseService = expenseService;
     }
 
-
     public void receiveMessage(String message) throws IOException {
         ExpenceCreateInfo expenceCreateInfo = mapper.readValue(message, ExpenceCreateInfo.class);
         Expense expense = this.expenseService.createExpense(expenceCreateInfo);
