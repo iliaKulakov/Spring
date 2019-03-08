@@ -2,16 +2,11 @@ package io.github.personal_finance;
 
 import io.github.personal_finance.domain.Arrival;
 import io.github.personal_finance.domain.Category;
-import io.github.personal_finance.repository.ArrivalRepository;
 import org.apache.tomcat.jni.User;
-import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class ArrivalControllerTest {
     private final List<Arrival> categories = new ArrayList<Arrival>();

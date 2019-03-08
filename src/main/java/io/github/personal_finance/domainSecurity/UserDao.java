@@ -11,13 +11,13 @@ public class UserDao {
     @Autowired
     private UserSecurityRepository userSecurityRepository;
 
-    public UserSecurity findByUsername(String username){
-        UserSecurity userSecurity =this.userSecurityRepository.findUserSecuritiesByUsername(username);
-        return  userSecurity;
+    public UserSecurity findByUsername(String username) {
+        UserSecurity userSecurity = this.userSecurityRepository.findUserSecuritiesByUsername(username);
+        return userSecurity;
 
     }
 
-    public void save(UserSecurity userSecurity){
+    public void save(UserSecurity userSecurity) {
         userSecurityRepository.save(userSecurity);
     }
 
