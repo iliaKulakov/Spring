@@ -27,7 +27,6 @@ public class App {
         SpringApplication.run(App.class, args);
     }
 
-
     @Bean
     Queue queue() {
         return new Queue(queueName, false);
