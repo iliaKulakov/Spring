@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
@@ -19,8 +19,7 @@ import static io.github.personal_finance.domainSecurity.Role.USER;
 @AllArgsConstructor
 @Entity
 @Table(name = "usersLogins")
-public class UserSecurity implements UserDetails
-{
+public class UserSecurity implements UserDetails {
     @Id
     @SequenceGenerator(name = "users_seq", sequenceName = "users_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
@@ -53,32 +52,32 @@ public class UserSecurity implements UserDetails
     }
 
     @Override
-    public boolean isCredentialsNonExpired(){
+    public boolean isCredentialsNonExpired() {
         return credentialsNonExpired;
     }
 
     @Override
-    public boolean isAccountNonLocked(){
+    public boolean isAccountNonLocked() {
         return accountNonLocked;
     }
 
     @Override
-    public boolean isAccountNonExpired(){
+    public boolean isAccountNonExpired() {
         return accountNonExpired;
     }
 
     @Override
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
     @Override
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
     @Override
-    public List<Role> getAuthorities(){
+    public List<Role> getAuthorities() {
         List<Role> authorities = Arrays.asList(USER);
         return authorities;
     }
