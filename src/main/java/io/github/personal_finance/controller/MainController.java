@@ -1,6 +1,8 @@
 package io.github.personal_finance.controller;
 
 import io.github.personal_finance.domain.Hello;
+import io.github.personal_finance.securityService.SecurityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,4 +21,5 @@ public class MainController {
                 new Hello(counter.incrementAndGet(),
                         String.format(template, name));
     }
+
 }

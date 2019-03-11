@@ -4,12 +4,14 @@ import io.github.personal_finance.securityService.SecurityService;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
 
+@Component
 public class SecurityServiceImpl implements SecurityService {
 
     private static final String secretKey= "4C8kum4LxyKWYLM78sKdXrzbBjDCFyfX";

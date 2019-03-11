@@ -18,7 +18,7 @@ public class SecurityUserService implements UserDetailsService {
     @Autowired
     private UserDao userDao;
 
-    @PostConstruct //create user with Bcrypt
+    @PostConstruct
     public void init() {
 
         String password = new BCryptPasswordEncoder().encode("password");
