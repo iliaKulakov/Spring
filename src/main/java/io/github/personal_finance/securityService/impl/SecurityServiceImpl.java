@@ -17,8 +17,7 @@ public class SecurityServiceImpl implements SecurityService {
     @Override
     public String createToken(String subject, long ttlMillis) {
         if (ttlMillis <= 0) {
-            throw new RuntimeException("Expiry time must be greater than Zero :
-                    ["+ttlMillis+"] ");
+            throw new RuntimeException("Expiry time must be greater than Zero : ["+ttlMillis+"] ");
         }
         // The JWT signature algorithm we will be using to sign the token
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
