@@ -4,6 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface SecurityService {
+
     String createToken(String subject, long ttlMillis);
+
+    String getSubject(String token);
 
 }

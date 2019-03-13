@@ -1,6 +1,7 @@
 package io.github.personal_finance.securityService.impl;
 
 import io.github.personal_finance.securityService.SecurityService;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -36,6 +37,14 @@ public class SecurityServiceImpl implements SecurityService {
         long nowMillis = System.currentTimeMillis();
         builder.setExpiration(new Date(nowMillis + ttlMillis));
         return builder.compact();
+    }
+
+    @Override
+    public String getSubject(String token) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(DatatypeConverter.parseBase64Binary(secretKey))
+                .parseClaimsJws(token).getBody();
+        return claims.getSubject();
     }
 
 }
