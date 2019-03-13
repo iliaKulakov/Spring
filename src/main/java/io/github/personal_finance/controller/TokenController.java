@@ -21,6 +21,7 @@ public class TokenController {
     }
 
 
+
     @ResponseBody
     @RequestMapping("/security/generate/token")
     public Map<String, Object> generateToken(@RequestParam(value="subject")
