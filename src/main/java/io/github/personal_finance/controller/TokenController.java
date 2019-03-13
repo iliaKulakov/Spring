@@ -20,8 +20,6 @@ public class TokenController {
         this.securityService = securityService;
     }
 
-
-
     @ResponseBody
     @RequestMapping("/security/generate/token")
     public Map<String, Object> generateToken(@RequestParam(value="subject")
