@@ -1,5 +1,7 @@
 package io.github.personal_finance.controller;
 
+import io.github.personal_finance.domainSecurity.dtoSecurity.TokenSecurityTable;
+import io.github.personal_finance.repository.TokenRepository;
 import io.github.personal_finance.securityService.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +15,13 @@ import java.util.Map;
 @RestController
 public class TokenController {
 
-    SecurityService securityService;
-
-    @Autowired
-    public TokenController(SecurityService securityService) {
+    public TokenController(SecurityService securityService, TokenRepository tokenRepository) {
         this.securityService = securityService;
+        this.tokenRepository = tokenRepository;
     }
+
+    SecurityService securityService;
+    TokenRepository tokenRepository;
 
     @ResponseBody
     @RequestMapping("/security/generate/token")
@@ -27,8 +30,12 @@ public class TokenController {
         String token = securityService.createToken(subject, (2 * 1000 * 60));
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("result", token);
-        return map;
 
+        var tokenSecurityTable = new TokenSecurityTable();
+        tokenSecurityTable.setTokens(token);
+        tokenRepository.save(tokenSecurityTable);
+
+        return map;
     }
 
     @ResponseBody
